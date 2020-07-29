@@ -4,7 +4,6 @@
     <ChangeName v-bind:text="text"></ChangeName>
     <ShowAndHidden v-bind:isShow="isShow" v-bind:showText="showText"/>
 
-
     <Caption v-bind:caption="caption"/>
 
     <div class="input-value">
