@@ -1,9 +1,107 @@
+html,
+body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+p{
+  padding: 0;
+  margin: 0;
+}
 #vue-app {
+  h1{
+    margin: 0;
+    padding: 15px 0;
+  }
+
+  min-height: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   background-color: orange;
-  margin-top: 60px;
+  .btn__default{
+    width: 90px;
+    height: 40px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: 0.3s font-size;
+    cursor: pointer;
+    &--h51{
+      height: 51px;
+    }
+    &:hover{
+      border-color: black;
+      font-size: 16px;
+    }
+  }
+  .vue__logo{
+    width: 100px;
+    margin-top: 40px;
+  }
+  .is-show{
+    height: 120px;
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    &__wrapper{
+      height: 60px;
+    }
+  }
+  .task{
+    display: flex;
+    width: 400px;
+    margin: 0 auto 5px;
+    padding: 4px;
+    align-items: center;
+    border: 2px solid darkorange;
+    border-radius: 5px;
+    &__wrapper{
+      width: 300px;
+    }
+    &__btn-delete{
+      border: 2px solid black;
+      height: 33px;
+      &:hover{
+        background-color: #d5d5d5;
+      }
+      //&:active,
+      //&:focus{
+      //  transform: translate(3px 3px);
+      //}
+    }
+    &__caption{
+      margin: 1px;
+    }
+    &__text{
+      padding-bottom: 10px;
+    }
+  }
+  .my-counter{
+    display: flex;
+    //margin: 0 autp;
+    justify-content: center;
+    p{
+      width: 150px;
+    }
+  }
+  .input-value{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    &__wrapper{
+      display: flex;
+      flex-direction: column;
+    }
+    input{
+      margin: 5px;
+    }
+    .input__red{
+      border: 2px solid red;
+      &::placeholder{
+        color: red;
+      }
+    }
+  }
 }
