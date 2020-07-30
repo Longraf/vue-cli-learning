@@ -21,7 +21,7 @@
 <!--      </div>-->
 <!--      <button class="task__btn-delete" @click="deleteTask(item)">Удалить</button>-->
 <!--    </div>-->
-    <MyTask/>
+    <MyTask v-bind:tasks="tasks" />
     
   </div>
 </template>
