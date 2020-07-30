@@ -13,7 +13,8 @@
     export default {
         name: 'AddNewTask',
         props: {
-            newTask: Object
+            newTask: Object,
+            tasks: Array
         },
         methods:{
             addTask(){
@@ -22,10 +23,19 @@
                 } else{
                     this.newTask.taskError = false;
                 }
-                this.$emit('tasks', this.tasks.push({
-                    task: this.newTask.task,
-                    desc: this.newTask.desc
-                }));
+                // console.log(this.tasks);
+                this.$emit('newTask', this.newTask);
+                // console.log(`${this.newTask} it is thisNewTask`)
+                // let tasks = this.tasks;
+                // tasks.push(this.newTask);
+                //
+                // this.tasks = tasks;
+                // localStorage.setItem('tasks', JSON.stringify(tasks));
+                // this.tasks.push({
+                //     task: this.newTask.task,
+                //     desc: this.newTask.desc
+                // });
+
                 // this.tasks.push({
                 //     task: this.newTask.task,
                 //     desc: this.newTask.desc

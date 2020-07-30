@@ -2,11 +2,11 @@
 	<div id="vue-app">
 		<Counter v-bind:count="count" v-on:count="ChangeCount"/>
 		<ChangeName v-bind:text="text"></ChangeName>
-		<ShowAndHidden v-bind:isShow="isShow" v-bind:showText="showText"/>
+		<ShowAndHidden v-model="isShow"/>
 
 		<Caption :caption="caption" :tasksCount="tasks.length"/>
 
-        <AddNewTask v-bind:newTask="newTask"/>
+        <AddNewTask :newTask="newTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
 <!--		<h1>{{caption}}</h1>-->
 		<button @click="deleteTask(1)">Delete</button>
@@ -36,7 +36,7 @@ import {data} from './data/data';
       text: "lalala",
       isShow: true,
       caption: 'Список задач: ',
-      showText: 'Скрыть',
+      showText: 'ss123',
       tasks: [],
       newTask: {
         task: '',
@@ -46,14 +46,21 @@ import {data} from './data/data';
       }
     }
   },
-  watch: {
-  },
   created(){
-    this.tasks = data;
+	// this.tasks = JSON.parse(localStorage.getItem('tasks'))
     // localStorage.setItem('tasks', JSON.stringify(this.tasks))
+	this.tasks = data;
   },
-  filters:{
-    // upperCase
+  watch:{
+	newTask(){
+
+	},
+	showText(){
+		console.log(this)
+	},
+	isShow(){
+		console.log(this)
+	}
   },
   computed:{
   },
@@ -63,6 +70,7 @@ import {data} from './data/data';
     },
     deleteTask(num){
 		this.tasks.splice(num, 1);
+		// localStorage.setItem('tasks', JSON.stringify(this.tasks))
 	},
   },
   components: {

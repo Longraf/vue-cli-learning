@@ -3,7 +3,7 @@
         <div class="is-show__wrapper">
             <h1 v-if=isShow >This is show</h1>
         </div>
-        <button class="btn__default" type="submit" @click.prevent="ShowOrHidden()">{{showText}}</button>
+        <button class="btn__default" type="submit" @click="ShowOrHidden(isShow)">{{isShow}}</button>
     </div>
 </template>
 
@@ -17,10 +17,10 @@
         watch: {
             isShow(stat){
                 if (stat){
-                    this.$emit('showText', 'Скрыть')
+                    // this.$emit('showText', 'Скрыть')
                     // this.showText = 'Скрыть'
                 } else {
-                    this.$emit('showText', 'Показать');
+                    // this.$emit('showText', 'Показать');
                     // this.showText = 'Показать'
                 }
             }
