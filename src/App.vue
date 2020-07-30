@@ -13,6 +13,7 @@
 <!--      </div>-->
 <!--      <input class="btn__submit btn__default btn__default&#45;&#45;h51" type="submit" @click="addTask()">-->
 <!--    </div>-->
+    <AddNewTask v-bind:newTask="newTask"/>
 <!--    <div class='task' v-for="item in tasks" :key="item.id">-->
 <!--      <input type="checkbox">-->
 <!--      <div class="task__wrapper">-->
@@ -21,7 +22,7 @@
 <!--      </div>-->
 <!--      <button class="task__btn-delete" @click="deleteTask(item)">Удалить</button>-->
 <!--    </div>-->
-    <MyTask  v-for="task in tasks" v-bind:task="task" :key="task.id"/>
+    <MyTask  v-for="task in tasks" v-bind:task="task" v-bind:tasks="tasks" :key="task.id"/>
     
   </div>
 </template>
@@ -29,6 +30,7 @@
 <script>
 import Caption from "./components/Caption";
 import MyTask from "./components/MyTask";
+import AddNewTask from "./components/AddNewTask"
 import Counter from "./components/Counter";
 import {data} from './data/data';
 import ChangeName from "./components/ChangeName";
@@ -61,22 +63,9 @@ export default {
     deleteTask(task){
       this.tasks.splice(this.tasks.indexOf(task),1)
     },
-    addTask(){
-      if (this.newTask.task == ''){
-         return this.newTask.taskError = true;
-      } else{
-         this.newTask.taskError = false;
-      }
-      this.tasks.push({
-        task: this.newTask.task,
-        desc: this.newTask.desc
-      });
-      this.newTask.task = '';
-      this.newTask.desc = '';
-      // localStorage.setItem('tasks', JSON.stringify(this.tasks))
-    },
   },
   components: {
+    AddNewTask,
     ChangeName,
     Caption,
     MyTask,

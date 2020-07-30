@@ -5,7 +5,7 @@
             <h3 class="task__caption">{{ task.task }}</h3>
             <p class="task__text">{{ task.desc }}  !!</p>
         </div>
-        <button class="task__btn-delete">Удалить</button>
+        <button @click="deleteTask(task)" class="task__btn-delete">Удалить</button>
     </div>
 </template>
 
@@ -16,10 +16,11 @@
             task: Object,
         },
 
-        // methods: {
-        //     deleteTask(task){
-        //         this.tasks.splice(this.tasks.indexOf(task),1)
-        //     }
-        // }
+        methods: {
+            deleteTask(task){
+                console.log(task);
+                this.tasks.splice(this.tasks.indexOf(task),1)
+            }
+        }
     }
 </script>
