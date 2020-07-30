@@ -1,5 +1,5 @@
 <template>
-    <h1 v-on:click.once="changeName()">{{text}} !</h1>
+    <h1 v-on:click.once="changeName()">{{textIn}} !</h1>
 </template>
 
 <script>
@@ -8,12 +8,17 @@
         props: {
             text: String
         },
+        data(){
+            return{
+                textIn: this.text
+            }
+        },
         methods:{
             changeName(){
                 let newText = 'trololo';
-                this.text = `Вы изменили ${this.text} на ${newText}`
+                this.textIn = `Вы изменили ${this.textIn} на ${newText}`
                 setTimeout(()=>{
-                    this.text = newText;
+                    this.textIn = newText;
                 }, 1000)
             },
         }

@@ -3,7 +3,7 @@
 <!--        <p>{{newTask.task}}</p>-->
         <div class="input-value__wrapper">
             <input v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task" type="text" placeholder="Введите задачу">
-            <input v-model="newTask.desc" type="text" placeholder="Описание">
+            <input v-bind="newTask.desc" type="text" placeholder="Описание">
         </div>
         <input class="btn__submit btn__default btn__default--h51" type="submit" @click="addTask()">
     </div>
@@ -13,37 +13,38 @@
     export default {
         name: 'AddNewTask',
         props: {
-            newTask: Object,
-            tasks: Array
+            tasks: Array,
+        },
+        data(){
+          return {
+              newTask: {
+                  task: '',
+                  desc: '',
+                  taskError: false,
+                  isComplete: false,
+              },
+          }
         },
         methods:{
             addTask(){
+
+
                 if (this.newTask.task == ''){
                     return this.newTask.taskError = true;
                 } else{
                     this.newTask.taskError = false;
                 }
-                // console.log(this.tasks);
-                this.$emit('newTask', this.newTask);
-                // console.log(`${this.newTask} it is thisNewTask`)
-                // let tasks = this.tasks;
-                // tasks.push(this.newTask);
-                //
-                // this.tasks = tasks;
-                // localStorage.setItem('tasks', JSON.stringify(tasks));
-                // this.tasks.push({
-                //     task: this.newTask.task,
-                //     desc: this.newTask.desc
-                // });
-
-                // this.tasks.push({
-                //     task: this.newTask.task,
-                //     desc: this.newTask.desc
-                // });
+                let tasks = this.tasks;
+                console.log(tasks);
+                this.newTask = {
+                    task: this.newTask.task,
+                    desc: this.newTask.desc,
+                };
+                tasks.push(this.newTask);
+                this.tasks = tasks;
 
                 this.newTask.task = '';
                 this.newTask.desc = '';
-                // localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
         }
     }

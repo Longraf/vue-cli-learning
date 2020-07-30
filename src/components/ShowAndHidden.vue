@@ -1,9 +1,9 @@
 <template>
     <div class="is-show">
         <div class="is-show__wrapper">
-            <h1 v-if=isShow >This is show</h1>
+            <h1 v-if=isShowInComponent >This is show</h1>
         </div>
-        <button class="btn__default" type="submit" @click="ShowOrHidden(isShow)">{{isShow}}</button>
+        <button class="btn__default" type="submit" @click="ShowOrHidden(isShowInComponent)">{{btnText}}</button>
     </div>
 </template>
 
@@ -14,21 +14,21 @@
             isShow: Boolean,
             showText: String,
         },
+        data(){
+            return {
+                isShowInComponent: this.isShow,
+                btnText: this.isShow ? 'Скрыть' : 'Показать'
+            };
+
+        },
         watch: {
-            isShow(stat){
-                if (stat){
-                    // this.$emit('showText', 'Скрыть')
-                    // this.showText = 'Скрыть'
-                } else {
-                    // this.$emit('showText', 'Показать');
-                    // this.showText = 'Показать'
-                }
+            isShowInComponent(stat){
+                stat ? this.btnText = 'Скрыть' : this.btnText = 'Показать'
             }
         },
         methods: {
             ShowOrHidden(){
-                this.$emit('isShow', !this.isShow);
-                // this.isShow = !this.isShow;
+                this.isShowInComponent = !this.isShowInComponent
             },
         }
     }
