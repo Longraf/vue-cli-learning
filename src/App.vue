@@ -9,6 +9,7 @@
         <AddNewTask v-bind:newTask="newTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
 <!--		<h1>{{caption}}</h1>-->
+		<button @click="deleteTask(1)">Delete</button>
 	</div>
 </template>
 
@@ -49,7 +50,7 @@ import {data} from './data/data';
   },
   created(){
     this.tasks = data;
-    localStorage.setItem('tasks', this.tasks)
+    // localStorage.setItem('tasks', JSON.stringify(this.tasks))
   },
   filters:{
     // upperCase
@@ -59,7 +60,10 @@ import {data} from './data/data';
   methods:{
     ChangeCount(value){
         this.count += value;
-    }
+    },
+    deleteTask(num){
+		this.tasks.splice(num, 1);
+	},
   },
   components: {
     AddNewTask,
