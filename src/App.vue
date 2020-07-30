@@ -21,7 +21,7 @@
 <!--      </div>-->
 <!--      <button class="task__btn-delete" @click="deleteTask(item)">Удалить</button>-->
 <!--    </div>-->
-    <MyTask v-bind:tasks="tasks" />
+    <MyTask  v-for="task in tasks" v-bind:task="task" :key="task.id"/>
     
   </div>
 </template>
