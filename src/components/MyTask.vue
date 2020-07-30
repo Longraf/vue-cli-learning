@@ -20,7 +20,7 @@
 
 <script>
     export default {
-        name: 'Task',
+        name: 'MyTask',
         // props: {
         //     tasks: Array,
         //     newTask: Object
