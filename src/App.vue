@@ -21,14 +21,14 @@
       </div>
       <button class="task__btn-delete" @click="deleteTask(item)">Удалить</button>
     </div>
-<!--    <Task v-bind:tasks="tasks"/>-->
+    <Task/>
     
   </div>
 </template>
 
 <script>
 import Caption from "./components/Caption";
-// import Task from "./components/Task";
+import Task from "./components/Task";
 import Counter from "./components/Counter";
 import {data} from './data/data';
 import ChangeName from "./components/ChangeName";
@@ -79,7 +79,7 @@ export default {
   components: {
     ChangeName,
     Caption,
-    // Task,
+    Task,
     Counter,
     ShowAndHidden
   }
