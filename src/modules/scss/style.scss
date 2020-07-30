@@ -73,9 +73,17 @@ p{
     }
     &__caption{
       margin: 1px;
+      &--complete{
+        color: #cc9126;
+        text-decoration: line-through;
+      }
     }
     &__text{
       padding-bottom: 10px;
+      &--complete{
+        color: #cc9126;
+        text-decoration: line-through;
+      }
     }
   }
   .my-counter{

@@ -1,6 +1,6 @@
 <template>
     <h1 >
-        <p>{{caption}}</p>
+        <p>{{caption}} {{tasksCount}}</p>
     </h1>
 </template>
 
@@ -8,7 +8,8 @@
     export default {
         name: 'Caption',
         props: {
-            caption: String
+            caption: String,
+            tasksCount: Number
         }
     }
 </script>

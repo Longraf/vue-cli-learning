@@ -4,78 +4,59 @@
 		<ChangeName v-bind:text="text"></ChangeName>
 		<ShowAndHidden v-bind:isShow="isShow" v-bind:showText="showText"/>
 
-		<Caption v-bind:caption="caption"/>
+		<Caption :caption="caption" :tasksCount="tasks.length"/>
 
-		<!--    <div class="input-value">-->
-		<!--      <div class="input-value__wrapper">-->
-		<!--        <input v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task" type="text" placeholder="Введите задачу">-->
-		<!--        <input v-model="newTask.desc" type="text" placeholder="Описание">-->
-		<!--      </div>-->
-		<!--      <input class="btn__submit btn__default btn__default&#45;&#45;h51" type="submit" @click="addTask()">-->
-		<!--    </div>-->
-		<!--    <div class='task' v-for="item in tasks" :key="item.id">-->
-		<!--      <input type="checkbox">-->
-		<!--      <div class="task__wrapper">-->
-		<!--        <h3 class in="task__caption">{{item.task}}</h3>-->
-		<!--        <p class="task__text">{{item.desc}}</p>-->
-		<!--      </div>-->
-		<!--      <button class="task__btn-delete" @click="deleteTask(item)">Удалить</button>-->
-		<!--    </div>-->
-		<MyTask :key="task.id" v-bind:task="task" v-for="task in tasks"/>
-
+        <AddNewTask v-bind:newTask="newTask"/>
+		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
+<!--		<h1>{{caption}}</h1>-->
 	</div>
 </template>
 
 <script>
+//components
 import Caption from "./components/Caption";
 import MyTask from "./components/MyTask";
 import AddNewTask from "./components/AddNewTask"
 import Counter from "./components/Counter";
-import {data} from './data/data';
 import ChangeName from "./components/ChangeName";
 import ShowAndHidden from "./components/ShowAndHidden";
 
-export default {
+//filters
+// import upperCase from "./filters/filter"
+
+//data
+import {data} from './data/data';
+
+ export default {
   name: 'App',
   data (){
     return {
       count: 112,
       text: "lalala",
       isShow: true,
-      caption: 'Заголовок',
+      caption: 'Список задач: ',
       showText: 'Скрыть',
       tasks: [],
       newTask: {
         task: '',
         desc: '',
         taskError: false,
+		isComplete: false,
       }
     }
+  },
+  watch: {
   },
   created(){
     this.tasks = data;
     localStorage.setItem('tasks', this.tasks)
   },
+  filters:{
+    // upperCase
+  },
   computed:{
   },
   methods:{
-    deleteTask(task){
-      this.tasks.splice(this.tasks.indexOf(task),1)
-    },
-    addTask(){
-      if (this.newTask.task == ''){
-         return this.newTask.taskError = true;
-      } else{
-         this.newTask.taskError = false;
-      }
-      this.tasks.push({
-        task: this.newTask.task,
-        desc: this.newTask.desc
-      });
-      this.newTask.task = '';
-      this.newTask.desc = '';
-      // localStorage.setItem('tasks', JSON.stringify(this.tasks))
-    },
     ChangeCount(value){
         this.count += value;
     }

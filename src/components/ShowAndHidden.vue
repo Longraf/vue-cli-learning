@@ -17,15 +17,18 @@
         watch: {
             isShow(stat){
                 if (stat){
-                    this.showText = 'Скрыть'
+                    this.$emit('showText', 'Скрыть')
+                    // this.showText = 'Скрыть'
                 } else {
-                    this.showText = 'Показать'
+                    this.$emit('showText', 'Показать');
+                    // this.showText = 'Показать'
                 }
             }
         },
         methods: {
             ShowOrHidden(){
-                this.isShow = !this.isShow;
+                this.$emit('isShow', !this.isShow);
+                // this.isShow = !this.isShow;
             },
         }
     }
