@@ -1,30 +1,29 @@
 <template>
-  <div id="vue-app">
-    <Counter v-bind:count="count"/>
-    <ChangeName v-bind:text="text"></ChangeName>
-    <ShowAndHidden v-bind:isShow="isShow" v-bind:showText="showText"/>
+	<div id="vue-app">
+		<Counter v-bind:count="count" v-on:count="ChangeCount"/>
+		<ChangeName v-bind:text="text"></ChangeName>
+		<ShowAndHidden v-bind:isShow="isShow" v-bind:showText="showText"/>
 
-    <Caption v-bind:caption="caption"/>
+		<Caption v-bind:caption="caption"/>
 
-<!--    <div class="input-value">-->
-<!--      <div class="input-value__wrapper">-->
-<!--        <input v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task" type="text" placeholder="Введите задачу">-->
-<!--        <input v-model="newTask.desc" type="text" placeholder="Описание">-->
-<!--      </div>-->
-<!--      <input class="btn__submit btn__default btn__default&#45;&#45;h51" type="submit" @click="addTask()">-->
-<!--    </div>-->
-    <AddNewTask v-bind:newTask="newTask"/>
-<!--    <div class='task' v-for="item in tasks" :key="item.id">-->
-<!--      <input type="checkbox">-->
-<!--      <div class="task__wrapper">-->
-<!--        <h3 class in="task__caption">{{item.task}}</h3>-->
-<!--        <p class="task__text">{{item.desc}}</p>-->
-<!--      </div>-->
-<!--      <button class="task__btn-delete" @click="deleteTask(item)">Удалить</button>-->
-<!--    </div>-->
-    <MyTask  v-for="task in tasks" v-bind:task="task" v-bind:tasks="tasks" :key="task.id"/>
-    
-  </div>
+		<!--    <div class="input-value">-->
+		<!--      <div class="input-value__wrapper">-->
+		<!--        <input v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task" type="text" placeholder="Введите задачу">-->
+		<!--        <input v-model="newTask.desc" type="text" placeholder="Описание">-->
+		<!--      </div>-->
+		<!--      <input class="btn__submit btn__default btn__default&#45;&#45;h51" type="submit" @click="addTask()">-->
+		<!--    </div>-->
+		<!--    <div class='task' v-for="item in tasks" :key="item.id">-->
+		<!--      <input type="checkbox">-->
+		<!--      <div class="task__wrapper">-->
+		<!--        <h3 class in="task__caption">{{item.task}}</h3>-->
+		<!--        <p class="task__text">{{item.desc}}</p>-->
+		<!--      </div>-->
+		<!--      <button class="task__btn-delete" @click="deleteTask(item)">Удалить</button>-->
+		<!--    </div>-->
+		<MyTask :key="task.id" v-bind:task="task" v-for="task in tasks"/>
+
+	</div>
 </template>
 
 <script>
@@ -63,6 +62,23 @@ export default {
     deleteTask(task){
       this.tasks.splice(this.tasks.indexOf(task),1)
     },
+    addTask(){
+      if (this.newTask.task == ''){
+         return this.newTask.taskError = true;
+      } else{
+         this.newTask.taskError = false;
+      }
+      this.tasks.push({
+        task: this.newTask.task,
+        desc: this.newTask.desc
+      });
+      this.newTask.task = '';
+      this.newTask.desc = '';
+      // localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    },
+    ChangeCount(value){
+        this.count += value;
+    }
   },
   components: {
     AddNewTask,
