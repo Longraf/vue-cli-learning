@@ -23,7 +23,7 @@
                 this.$emit('delTask', task)
             },
             isCompleted(task){
-                this.$emit('isComplete', {task})
+                this.$emit('isComplete', task)
             }
         }
     }
