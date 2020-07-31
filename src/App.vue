@@ -6,7 +6,7 @@
 
 		<Caption :caption="caption" :tasksCount="tasks.length"/>
 
-        <AddNewTask :newTask="newTask"/>
+        <AddNewTask :newTask="newTask" v-on:newTask="CreateNewTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
 <!--		<h1>{{caption}}</h1>-->
 		<button @click="deleteTask(1)">Delete</button>
@@ -52,9 +52,6 @@ import {data} from './data/data';
 	this.tasks = data;
   },
   watch:{
-	newTask(){
-
-	},
 	showText(){
 		console.log(this)
 	},
@@ -65,6 +62,10 @@ import {data} from './data/data';
   computed:{
   },
   methods:{
+    CreateNewTask(data){
+        console.log('check emit');
+        console.log(data);
+    },
     ChangeCount(value){
         this.count += value;
     },

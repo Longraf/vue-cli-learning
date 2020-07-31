@@ -24,7 +24,9 @@
                     this.newTask.taskError = false;
                 }
                 // console.log(this.tasks);
-                this.$emit('newTask', this.newTask);
+                this.$emit('newTask', {
+                  name: 'test'
+                });
                 // console.log(`${this.newTask} it is thisNewTask`)
                 // let tasks = this.tasks;
                 // tasks.push(this.newTask);
