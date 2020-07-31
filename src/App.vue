@@ -7,7 +7,7 @@
 		<Caption :caption="caption" :tasksCount="tasks.length"/>
 
         <AddNewTask :newTask="newTask" v-on:newTask="CreateNewTask"/>
-		<MyTask v-on:delTask="DeleteTask" :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
+		<MyTask v-on:isComplete='reloadTask' v-on:delTask="DeleteTask" :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
 	</div>
 </template>
 
@@ -46,6 +46,7 @@ import ShowAndHidden from "./components/ShowAndHidden";
   },
   created(){
 	this.tasks = JSON.parse(localStorage.getItem('tasks'));
+	console.log(this.tasks)
   },
   watch:{
   },
@@ -54,6 +55,7 @@ import ShowAndHidden from "./components/ShowAndHidden";
   methods:{
     CreateNewTask(data){
         this.tasks.push(data);
+        console.log(data)
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
     },
     ChangeCount(value){
@@ -63,6 +65,18 @@ import ShowAndHidden from "./components/ShowAndHidden";
         this.tasks.splice(this.tasks.indexOf(task),1);
 		localStorage.setItem('tasks', JSON.stringify(this.tasks))
 	},
+    reloadTask(task){
+        // task.isComplete = !task.isComplete;
+        // this.tasks.splice(this.tasks.indexOf(task),1);
+        // this.tasks.push(task);
+        // console.log(task.task.isComplete);
+        this.tasks[this.tasks.indexOf(task.task)].isComplete = task.task.isComplete
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+        // // console.log(this.tasks[this.tasks.indexOf(task.task)].isComplete);
+        // this.tasks[this.tasks.indexOf(task.task)].isComplete = !task.task.isComplete;
+
+        // this.tasks.splice(this.tasks.indexOf(task),1);
+    }
   },
   components: {
     AddNewTask,
