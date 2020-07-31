@@ -7,9 +7,7 @@
 		<Caption :caption="caption" :tasksCount="tasks.length"/>
 
         <AddNewTask :newTask="newTask" v-on:newTask="CreateNewTask"/>
-		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
-<!--		<h1>{{caption}}</h1>-->
-		<button @click="deleteTask(1)">Delete</button>
+		<MyTask v-on:delTask="DeleteTask" :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
 	</div>
 </template>
 
@@ -26,7 +24,7 @@ import ShowAndHidden from "./components/ShowAndHidden";
 // import upperCase from "./filters/filter"
 
 //data
-import {data} from './data/data';
+// import {data} from './data/data';
 
  export default {
   name: 'App',
@@ -47,31 +45,23 @@ import {data} from './data/data';
     }
   },
   created(){
-	// this.tasks = JSON.parse(localStorage.getItem('tasks'))
-    // localStorage.setItem('tasks', JSON.stringify(this.tasks))
-	this.tasks = data;
+	this.tasks = JSON.parse(localStorage.getItem('tasks'));
   },
   watch:{
-	showText(){
-		console.log(this)
-	},
-	isShow(){
-		console.log(this)
-	}
   },
   computed:{
   },
   methods:{
     CreateNewTask(data){
-        console.log('check emit');
-        console.log(data);
+        this.tasks.push(data);
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
     },
     ChangeCount(value){
         this.count += value;
     },
-    deleteTask(num){
-		this.tasks.splice(num, 1);
-		// localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    DeleteTask(task){
+        this.tasks.splice(this.tasks.indexOf(task),1);
+		localStorage.setItem('tasks', JSON.stringify(this.tasks))
 	},
   },
   components: {

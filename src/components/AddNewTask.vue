@@ -27,7 +27,8 @@
                 }
                 // console.log(this.tasks);
                 this.$emit('newTask', {
-                  name: 'test'
+                    task: this.newTask.task,
+                    desc: this.newTask.desc
                 });
                 // console.log(`${this.newTask} it is thisNewTask`)
                 // let tasks = this.tasks;

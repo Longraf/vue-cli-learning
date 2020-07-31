@@ -17,12 +17,10 @@
             task: Object,
             tasks: Array,
         },
-
         methods: {
             deleteTask(task){
-                console.log(task)
-                this.tasks.splice(this.tasks.indexOf(task),1);
-                localStorage.setItem('tasks', JSON.stringify(this.tasks))
+                console.log(task);
+                this.$emit('delTask', task)
             }
         }
     }
