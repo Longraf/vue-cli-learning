@@ -1,11 +1,11 @@
 <template>
-    <div class="modal-window">
-        <div class="modal-window__close-wrapper">
-            <div class="modal-window__close" @click="$emit('ClosePopup')"></div>
-            <div class="modal-window__body">Модальное окно видно !</div>
-        </div>
+	<div class="modal-window">
+		<div class="modal-window__close-wrapper">
+			<div @click="$emit('ClosePopup')" class="modal-window__close"></div>
+			<div class="modal-window__body">Модальное окно видно !</div>
+		</div>
 
-    </div>
+	</div>
 </template>
 
 <script>
@@ -16,8 +16,6 @@
         //         isShowModal: true
         //     }
         // },
-        methods: {
-
-        }
+        methods: {}
     }
 </script>

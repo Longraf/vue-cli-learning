@@ -9,8 +9,8 @@
 
 		<AddNewTask v-on:newTask="CreateNewTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask"/>
-		<button type="button" @click="isShowModal = true">Показать модальное окно</button>
-		<ModalWindow v-if="isShowModal" @click="isShowModal = !isShowModal" v-on:ClosePopup="isShowModal = false"/>
+		<button @click="isShowModal = true" type="button">Показать модальное окно</button>
+		<ModalWindow @click="isShowModal = !isShowModal" v-if="isShowModal" v-on:ClosePopup="isShowModal = false"/>
 	</div>
 </template>
 
@@ -40,7 +40,7 @@
                 caption: 'Список задач: ',
                 showText: 'ss123',
                 tasks: [],
-								isShowModal: false,
+                isShowModal: false,
                 // newTask: {}
             }
         },
@@ -50,7 +50,7 @@
             } else {
                 localStorage.setItem('tasks', JSON.stringify([]));
                 this.tasks = [];
-				this.tasks = JSON.parse(localStorage.getItem('tasks'));
+                this.tasks = JSON.parse(localStorage.getItem('tasks'));
             }
         },
         watch: {
@@ -67,9 +67,9 @@
                 // console.log(data);
                 // console.log(this.tasks);
                 if (this.tasks == null) {
-					this.tasks = [];
-				}
-				this.tasks.push(data);
+                    this.tasks = [];
+                }
+                this.tasks.push(data);
 
             },
             ChangeCount(value) {
@@ -79,9 +79,9 @@
                 this.tasks.splice(this.tasks.indexOf(task), 1);
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
-			ShowModal(boolean) {
+            ShowModal(boolean) {
                 this.isShowModal = boolean;
-			}
+            }
         },
         components: {
             AddNewTask,
@@ -90,7 +90,7 @@
             MyTask,
             Counter,
             ShowAndHidden,
-			ModalWindow
+            ModalWindow
         }
     }
 </script>

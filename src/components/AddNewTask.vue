@@ -3,7 +3,7 @@
 		<!--        <p>{{newTask.task}}</p>-->
 		<div class="vue-app__input-value-wrapper">
 			<input class="vue-app__input" placeholder="Введите задачу" type="text"
-            v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task">
+				v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task">
 			<input class="vue-app__input" placeholder="Описание" type="text" v-model="newTask.desc">
 		</div>
 		<input @click="addTask()" class="btn__submit btn__default btn__default--h51" type="submit">
