@@ -8,9 +8,11 @@
 		<Caption :caption="caption" :tasksCount="tasks ? tasks.length : 0"/>
 
 		<AddNewTask v-on:newTask="CreateNewTask"/>
-		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask"/>
-		<button type="button" @click="isShowModal = true">Показать модальное окно</button>
-		<ModalWindow v-if="isShowModal" @click="isShowModal = !isShowModal" v-on:ClosePopup="isShowModal = false"/>
+
+		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"
+				v-on:delTask="DeleteTask" v-on:changeTask="ShowModal"/>
+<!--		<button class="btn btn__width200" type="button" @click="ShowModal(1)">Показать модальное окно</button>-->
+		<ModalWindow :task="task" v-if="isShowModal" @click="isShowModal = !isShowModal" v-on:changeTask="ChangeTask" v-on:ClosePopup="isShowModal = false"/>
 	</div>
 </template>
 
@@ -40,7 +42,7 @@
                 caption: 'Список задач: ',
                 showText: 'ss123',
                 tasks: [],
-								isShowModal: false,
+				isShowModal: false,
                 // newTask: {}
             }
         },
@@ -79,8 +81,15 @@
                 this.tasks.splice(this.tasks.indexOf(task), 1);
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
-			ShowModal(boolean) {
-                this.isShowModal = boolean;
+			ShowModal(task) {
+                this.task = task;
+                this.isShowModal = true;
+                console.log('ShowModal');
+                console.log(task)
+			},
+			ChangeTask(task) {
+				console.log('ChangeTask V');
+				console.log(task)
 			}
         },
         components: {

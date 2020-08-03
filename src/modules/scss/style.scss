@@ -81,6 +81,7 @@ p{
   border-radius: 5px;
   &__wrapper{
     width: 300px;
+    margin: 10px auto;
   }
   &__caption{
     margin: 1px;
@@ -99,13 +100,18 @@ p{
 }
 
 .btn{
+  width: 115px;
+  height: 40px;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: 0.3s font-size;
+  cursor: pointer;
+  &:hover{
+    background-color: #d5d5d5;
+  }
+
   &__default{
-    width: 95px;
-    height: 40px;
-    margin: 0 5px;
-    border-radius: 5px;
-    transition: 0.3s font-size;
-    cursor: pointer;
+
     &--h51{
       height: 51px;
     }
@@ -114,24 +120,36 @@ p{
       font-size: 16px;
     }
   }
+
   &__submit{
     height: 52px;
     margin-top: 5px;
   }
+
   &__delete{
     height: 33px;
     &:hover{
       background-color: #d5d5d5;
     }
   }
+
+  &__change{
+    height: 33px;
+  }
+
+  &__width200{
+    width: 200px;
+  }
 }
 
 .modal-window{
-  width: 80vw;
+  width: 50%;
   height: 80vh;
   top: 10vh;
-  left: 10vw;
+  left: 50%;
+  margin-left: -25%;
   background: snow;
+  max-height: 500px;
   position: absolute;
   &__close-wrapper{
     width: 100%;
@@ -140,8 +158,8 @@ p{
   }
   &__close{
     position: relative;
-    height: 20px;
-    width: 20px;
+    height: 40px;
+    width: 40px;
     cursor: pointer;
     //background-color: greenyellow;
     margin-left: auto;
@@ -149,9 +167,9 @@ p{
     &:before{
       content: '';
       display: flex;
-      top: 9px;
+      top: 17px;
       height: 2px;
-      width: 20px;
+      width: 40px;
       background-color: red;
       position: absolute;
       transform: rotate(45deg);

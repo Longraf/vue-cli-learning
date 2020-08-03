@@ -6,7 +6,7 @@
             v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task">
 			<input class="vue-app__input" placeholder="Описание" type="text" v-model="newTask.desc">
 		</div>
-		<input @click="addTask()" class="btn__submit btn__default btn__default--h51" type="submit">
+		<input @click="addTask()" class="btn btn__submit  btn__default--h51" type="submit">
 	</div>
 </template>
 
@@ -36,7 +36,8 @@
                 this.$emit('newTask', {
                     isComplete: this.newTask.isComplete,
                     task: this.newTask.task,
-                    desc: this.newTask.desc
+                    desc: this.newTask.desc,
+					executionPeriod: false,
                 });
                 this.newTask.task = '';
                 this.newTask.desc = '';
