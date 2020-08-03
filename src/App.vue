@@ -36,7 +36,7 @@ import ShowAndHidden from "./components/ShowAndHidden";
       caption: 'Список задач: ',
       showText: 'ss123',
       tasks: [],
-      newTask: {}
+      // newTask: {}
     }
   },
   created(){
@@ -47,7 +47,7 @@ import ShowAndHidden from "./components/ShowAndHidden";
       tasks(){
           console.log('watch on taskS');
           localStorage.setItem('tasks', JSON.stringify(this.tasks))
-      }
+      }, deep: true
   },
   computed:{
   },
