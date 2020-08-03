@@ -5,7 +5,7 @@
 			<h3 :class="task.isComplete ? 'task__caption--complete' : ''" class="task__caption">{{ task.task }}</h3>
 			<p :class="task.isComplete ? 'task__text--complete' : ''" class="task__text">{{ task.desc }}</p>
 		</div>
-		<button @click="changeTaskk(task)" class="btn btn__change">Редактировать</button>
+		<button @click="changeTask(task)" class="btn btn__change">Редактировать</button>
 		<button @click="deleteTask(task)" class="btn btn__delete">Удалить</button>
 	</div>
 </template>
@@ -24,7 +24,7 @@
                 // console.log(task);
                 this.$emit('delTask', task)
             },
-			changeTaskk(task){
+			changeTask(task){
                 // console.log(task);
                 this.$emit('changeTask', task)
 			},
