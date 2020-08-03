@@ -1,7 +1,7 @@
 <template>
     <div class="modal-window">
         <div class="modal-window__close-wrapper">
-            <div class="modal-window__close" @click="hideWindow"></div>
+            <div class="modal-window__close"></div>
             <div class="modal-window__body">Модальное окно видно !</div>
         </div>
 
@@ -17,9 +17,7 @@
         //     }
         // },
         methods: {
-            hideWindow() {
-                this.$emit('isVisibleModal', false)
-            }
+
         }
     }
 </script>
