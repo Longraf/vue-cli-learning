@@ -41,18 +41,22 @@ import ShowAndHidden from "./components/ShowAndHidden";
   },
   created(){
 	this.tasks = JSON.parse(localStorage.getItem('tasks'));
-	// console.log(this.tasks)
   },
   watch:{
-      isComplete(){
-          console.log('watcher is complete')
+      // reloadTask(task){
+      //     console.log(`old count ${task}`)
+      // },
+      tasks: {
+          handler () {
+              localStorage.setItem('tasks', JSON.stringify(this.tasks));
+          },
+          deep: true
       },
-      tasks(){
-          // console.log(a);
-          console.log('watch on taskS');
-          localStorage.setItem('tasks', JSON.stringify(this.tasks));
-          // localStorage.setItem('tasks', JSON.stringify(this.tasks))
-      }, immediate: true
+      // tasks(){
+      //     console.log('watch on taskS');
+      //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
+      //     localStorage.setItem('tasks', JSON.stringify(this.tasks))
+      // }
   },
   computed:{
   },
@@ -69,9 +73,9 @@ import ShowAndHidden from "./components/ShowAndHidden";
 		localStorage.setItem('tasks', JSON.stringify(this.tasks))
 	},
     reloadTask(){
-        console.log('reloadTask');
+        // console.log('reloadTask');
         // this.tasks[this.tasks.indexOf(task)].isComplete = task.isComplete;
-		localStorage.setItem('tasks', JSON.stringify(this.tasks))
+		// localStorage.setItem('tasks', JSON.stringify(this.tasks))
     //     // task.isComplete = !task.isComplete;
     //     // this.tasks.splice(this.tasks.indexOf(task),1);
     //     // this.tasks.push(task);
