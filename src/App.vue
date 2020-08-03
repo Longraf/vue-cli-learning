@@ -9,6 +9,8 @@
 
 		<AddNewTask v-on:newTask="CreateNewTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask"/>
+		<button type="button" @click="ShowModal(1)">Показать модальное окно</button>
+		<ModalWindow v-if="isShowModal" v-on:isVisibleModal="ShowModal(0)"/>
 	</div>
 </template>
 
@@ -20,6 +22,7 @@
     import Counter from "./components/Counter";
     import ChangeName from "./components/ChangeName";
     import ShowAndHidden from "./components/ShowAndHidden";
+    import ModalWindow from "./components/ModalWindow";
 
     //filters
     // import upperCase from "./filters/filter"
@@ -37,6 +40,7 @@
                 caption: 'Список задач: ',
                 showText: 'ss123',
                 tasks: [],
+				isShowModal: false,
                 // newTask: {}
             }
         },
@@ -46,6 +50,7 @@
             } else {
                 localStorage.setItem('tasks', JSON.stringify([]));
                 this.tasks = [];
+				this.tasks = JSON.parse(localStorage.getItem('tasks'));
             }
         },
         watch: {
@@ -61,7 +66,11 @@
             CreateNewTask(data) {
                 // console.log(data);
                 // console.log(this.tasks);
-                this.tasks.push(data);
+                if (this.tasks == null) {
+					this.tasks = [];
+				}
+				this.tasks.push(data);
+
             },
             ChangeCount(value) {
                 this.count += value;
@@ -70,9 +79,9 @@
                 this.tasks.splice(this.tasks.indexOf(task), 1);
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
-            reloadTask() {
-                // console.log('reloadTask');
-            }
+			ShowModal(boolean) {
+                this.isShowModal = boolean;
+			}
         },
         components: {
             AddNewTask,
@@ -80,7 +89,8 @@
             Caption,
             MyTask,
             Counter,
-            ShowAndHidden
+            ShowAndHidden,
+			ModalWindow
         }
     }
 </script>
