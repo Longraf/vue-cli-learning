@@ -10,7 +10,7 @@
 		<AddNewTask v-on:newTask="CreateNewTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask"/>
 		<button type="button" @click="isShowModal = true">Показать модальное окно</button>
-		<ModalWindow v-if="isShowModal" @click="isShowModal = !isShowModal"/>
+		<ModalWindow v-if="isShowModal" @click="isShowModal = !isShowModal" v-on:ClosePopup="isShowModal = false"/>
 	</div>
 </template>
 
