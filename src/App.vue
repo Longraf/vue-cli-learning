@@ -9,8 +9,8 @@
 
 		<AddNewTask v-on:newTask="CreateNewTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask"/>
-		<button type="button" @click="ShowModal(1)">Показать модальное окно</button>
-		<ModalWindow v-if="isShowModal" v-modal:isVisibleModal="ShowModal(0)"/>
+		<button type="button" @click="isShowModal = true">Показать модальное окно</button>
+		<ModalWindow v-if="isShowModal" @click="isShowModal = !isShowModal"/>
 	</div>
 </template>
 
@@ -40,7 +40,7 @@
                 caption: 'Список задач: ',
                 showText: 'ss123',
                 tasks: [],
-				isShowModal: false,
+								isShowModal: false,
                 // newTask: {}
             }
         },
