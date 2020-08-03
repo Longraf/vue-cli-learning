@@ -5,7 +5,7 @@
             <h3 class="task__caption" :class="task.isComplete ? 'task__caption--complete' : ''">{{ task.task }}</h3>
             <p class="task__text" :class="task.isComplete ? 'task__text--complete' : ''">{{ task.desc }}</p>
         </div>
-        <button @click="deleteTask(task)" class="task__btn-delete">Удалить</button>
+        <button @click="deleteTask(task)" class="btn btn__delete">Удалить</button>
     </div>
 </template>
 
@@ -19,7 +19,7 @@
         },
         methods: {
             deleteTask(task){
-                console.log(task);
+                // console.log(task);
                 this.$emit('delTask', task)
             },
             isCompleted(task){

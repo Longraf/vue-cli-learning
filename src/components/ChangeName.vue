@@ -1,5 +1,5 @@
 <template>
-    <h1 v-on:click.once="changeName()">{{textIn}} !</h1>
+    <h1 class="vue-app__caption" v-on:click.once="changeName()">{{textIn}} !</h1>
 </template>
 
 <script>
@@ -15,7 +15,7 @@
         },
         methods:{
             changeName(){
-                let newText = 'trololo';
+                let newText = 'Здравствуйте';
                 this.textIn = `Вы изменили ${this.textIn} на ${newText}`
                 setTimeout(()=>{
                     this.textIn = newText;

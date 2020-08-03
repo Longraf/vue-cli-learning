@@ -1,13 +1,14 @@
 <template>
-	<div id="vue-app">
+	<div id="vue-app" class="vue-app">
+        <ChangeName v-bind:text="text"></ChangeName>
 		<Counter v-bind:count="count" v-on:count="ChangeCount"/>
-		<ChangeName v-bind:text="text"></ChangeName>
+
 		<ShowAndHidden v-model="isShow"/>
 
-		<Caption :caption="caption" :tasksCount="tasks.length"/>
+		<Caption :caption="caption" :tasksCount="tasks ? tasks.length : 0"/>
 
         <AddNewTask v-on:newTask="CreateNewTask"/>
-		<MyTask v-on:isComplete="reloadTask" v-on:delTask="DeleteTask" :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
+		<MyTask v-on:delTask="DeleteTask" :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks"/>
 	</div>
 </template>
 
@@ -31,7 +32,7 @@ import ShowAndHidden from "./components/ShowAndHidden";
   data (){
     return {
       count: 112,
-      text: "lalala",
+      text: "Привет",
       isShow: true,
       caption: 'Список задач: ',
       showText: 'ss123',
@@ -40,30 +41,28 @@ import ShowAndHidden from "./components/ShowAndHidden";
     }
   },
   created(){
-	this.tasks = JSON.parse(localStorage.getItem('tasks'));
+	if (localStorage.getItem('tasks')){
+        this.tasks = JSON.parse(localStorage.getItem('tasks'));
+    } else{
+        localStorage.setItem('tasks', JSON.stringify([]));
+        this.tasks = [];
+    }
   },
   watch:{
-      // reloadTask(task){
-      //     console.log(`old count ${task}`)
-      // },
       tasks: {
           handler () {
               localStorage.setItem('tasks', JSON.stringify(this.tasks));
           },
-          deep: true
+          deep: true,
       },
-      // tasks(){
-      //     console.log('watch on taskS');
-      //     localStorage.setItem('tasks', JSON.stringify(this.tasks));
-      //     localStorage.setItem('tasks', JSON.stringify(this.tasks))
-      // }
   },
   computed:{
   },
   methods:{
     CreateNewTask(data){
+        // console.log(data);
+        // console.log(this.tasks);
         this.tasks.push(data);
-        // localStorage.setItem('tasks', JSON.stringify(this.tasks))
     },
     ChangeCount(value){
         this.count += value;
@@ -74,18 +73,6 @@ import ShowAndHidden from "./components/ShowAndHidden";
 	},
     reloadTask(){
         // console.log('reloadTask');
-        // this.tasks[this.tasks.indexOf(task)].isComplete = task.isComplete;
-		// localStorage.setItem('tasks', JSON.stringify(this.tasks))
-    //     // task.isComplete = !task.isComplete;
-    //     // this.tasks.splice(this.tasks.indexOf(task),1);
-    //     // this.tasks.push(task);
-    //     // console.log(task.task.isComplete);
-    //     // this.tasks[this.tasks.indexOf(task.task)].isComplete = task.task.isComplete
-    //     localStorage.setItem('tasks', JSON.stringify(this.tasks))
-    //     // // console.log(this.tasks[this.tasks.indexOf(task.task)].isComplete);
-    //     // this.tasks[this.tasks.indexOf(task.task)].isComplete = !task.task.isComplete;
-    //
-    //     // this.tasks.splice(this.tasks.indexOf(task),1);
     }
   },
   components: {

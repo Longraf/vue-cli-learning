@@ -1,11 +1,11 @@
 <template>
-    <h1 class="my-counter">
-        <button class="btn__default" @click="ChangeCount(10)">+10</button>
-        <button class="btn__default" @click="ChangeCount(1)">+1</button>
-        <p>{{count}}</p>
-        <button class="btn__default" v-on:click="ChangeCount(-1)">-1</button>
-        <button class="btn__default" v-on:click="ChangeCount(-10)">-10</button>
-    </h1>
+    <div class="vue-app__my-counter">
+        <button class="btn btn__default" @click="ChangeCount(10)">+10</button>
+        <button class="btn btn__default" @click="ChangeCount(1)">+1</button>
+        <p class="vue-app__paragraph">{{count}}</p>
+        <button class="btn btn__default" v-on:click="ChangeCount(-1)">-1</button>
+        <button class="btn btn__default" v-on:click="ChangeCount(-10)">-10</button>
+    </div>
 </template>
 <script>
     export default {

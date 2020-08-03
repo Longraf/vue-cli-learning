@@ -1,7 +1,7 @@
 <template>
-    <div class="is-show">
-        <div class="is-show__wrapper">
-            <h1 v-if=isShowInComponent >This is show</h1>
+    <div class="vue-app__is-show">
+        <div class="vue-app__is-show-wrapper">
+            <div class="vue-app__caption" v-if=isShowInComponent >This is show</div>
         </div>
         <button class="btn__default" type="submit" @click="ShowOrHidden(isShowInComponent)">{{btnText}}</button>
     </div>

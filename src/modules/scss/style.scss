@@ -8,10 +8,11 @@ p{
   padding: 0;
   margin: 0;
 }
-#vue-app {
-  h1{
+.vue-app {
+  &__caption{
     margin: 0;
     padding: 15px 0;
+    font-size: 30px;
   }
 
   min-height: 100%;
@@ -21,33 +22,14 @@ p{
   text-align: center;
   color: #2c3e50;
   background-color: orange;
-  .btn__default{
-    width: 95px;
-    height: 40px;
-    margin: 0 5px;
-    border-radius: 5px;
-    transition: 0.3s font-size;
-    cursor: pointer;
-    &--h51{
-      height: 51px;
-    }
-    &:hover{
-      border-color: black;
-      font-size: 16px;
-    }
-  }
-  .vue__logo{
-    width: 100px;
-    margin-top: 40px;
-  }
-  .is-show{
+  &__is-show{
     height: 120px;
     width: 300px;
     margin: 0 auto;
     border: 1px solid gray;
-    &__wrapper{
-      height: 60px;
-    }
+  }
+  &__is-show-wrapper{
+    height: 60px;
   }
   .task{
     display: flex;
@@ -59,17 +41,6 @@ p{
     border-radius: 5px;
     &__wrapper{
       width: 300px;
-    }
-    &__btn-delete{
-      border: 2px solid black;
-      height: 33px;
-      &:hover{
-        background-color: #d5d5d5;
-      }
-      //&:active,
-      //&:focus{
-      //  transform: translate(3px 3px);
-      //}
     }
     &__caption{
       margin: 1px;
@@ -86,31 +57,60 @@ p{
       }
     }
   }
-  .my-counter{
+  &__my-counter{
     display: flex;
     //margin: 0 autp;
     justify-content: center;
-    p{
-      width: 150px;
-    }
+    padding-top: 20px;
   }
-  .input-value{
+  &__paragraph{
+    width: 150px;
+    font-size: 40px;
+  }
+  &__input-value-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+  &__input-value{
     display: flex;
     justify-content: center;
     flex-direction: row;
     margin-bottom: 10px;
-    &__wrapper{
-      display: flex;
-      flex-direction: column;
-    }
-    input{
-      margin: 5px;
-    }
     .input__red{
       border: 2px solid red;
       &::placeholder{
         color: red;
       }
+    }
+  }
+  &__input{
+    margin: 5px;
+  }
+}
+.btn{
+  &__default{
+    width: 95px;
+    height: 40px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: 0.3s font-size;
+    cursor: pointer;
+    &--h51{
+      height: 51px;
+    }
+    &:hover{
+      border-color: black;
+      font-size: 16px;
+    }
+  }
+  &__submit{
+    height: 52px;
+    margin-top: 5px;
+  }
+  &__delete{
+    height: 33px;
+    &:hover{
+      background-color: #d5d5d5;
     }
   }
 }
