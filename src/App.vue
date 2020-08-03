@@ -93,7 +93,7 @@
                 this.ShowModal(true, newTask)
             },
             ChangeOldTask(newTask){
-
+                this.isShowModal = false;
                 console.log('It is newTask');
                 console.log(newTask);
             }

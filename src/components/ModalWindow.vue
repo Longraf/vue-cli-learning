@@ -42,8 +42,8 @@
 					desc: this.newTask.desc,
 					executionPeriod: false,
 				});
-				this.newTask.task = '';
-				this.newTask.desc = '';
+				// this.newTask.task = '';
+				// this.newTask.desc = '';
 			}
         }
     }
