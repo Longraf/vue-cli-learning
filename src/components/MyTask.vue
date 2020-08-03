@@ -1,12 +1,12 @@
 <template>
-    <div class='task'>
-        <input type="checkbox" v-model="task.isComplete" @click="isCompleted(task)">
-        <div class="task__wrapper">
-            <h3 class="task__caption" :class="task.isComplete ? 'task__caption--complete' : ''">{{ task.task }}</h3>
-            <p class="task__text" :class="task.isComplete ? 'task__text--complete' : ''">{{ task.desc }}</p>
-        </div>
-        <button @click="deleteTask(task)" class="btn btn__delete">Удалить</button>
-    </div>
+	<div class='task'>
+		<input @click="isCompleted(task)" type="checkbox" v-model="task.isComplete">
+		<div class="task__wrapper">
+			<h3 :class="task.isComplete ? 'task__caption--complete' : ''" class="task__caption">{{ task.task }}</h3>
+			<p :class="task.isComplete ? 'task__text--complete' : ''" class="task__text">{{ task.desc }}</p>
+		</div>
+		<button @click="deleteTask(task)" class="btn btn__delete">Удалить</button>
+	</div>
 </template>
 
 <script>
@@ -18,11 +18,11 @@
             tasks: Array,
         },
         methods: {
-            deleteTask(task){
+            deleteTask(task) {
                 // console.log(task);
                 this.$emit('delTask', task)
             },
-            isCompleted(task){
+            isCompleted(task) {
                 this.$emit('isComplete', task)
             }
         }

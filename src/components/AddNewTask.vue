@@ -1,12 +1,13 @@
 <template>
-    <div class="vue-app__input-value">
-<!--        <p>{{newTask.task}}</p>-->
-        <div class="vue-app__input-value-wrapper">
-            <input class="vue-app__input" v-model="newTask.task" v-bind:class="newTask.taskError ? 'input__red' : '' " type="text" placeholder="Введите задачу">
-            <input class="vue-app__input" v-model="newTask.desc" type="text" placeholder="Описание">
-        </div>
-        <input class="btn__submit btn__default btn__default--h51" type="submit" @click="addTask()">
-    </div>
+	<div class="vue-app__input-value">
+		<!--        <p>{{newTask.task}}</p>-->
+		<div class="vue-app__input-value-wrapper">
+			<input class="vue-app__input" placeholder="Введите задачу" type="text"
+          v-bind:class="newTask.taskError ? 'input__red' : '' " v-model="newTask.task">
+			<input class="vue-app__input" placeholder="Описание" type="text" v-model="newTask.desc">
+		</div>
+		<input @click="addTask()" class="btn__submit btn__default btn__default--h51" type="submit">
+	</div>
 </template>
 
 <script>
@@ -25,11 +26,11 @@
                 }
             }
         },
-        methods:{
-            addTask(){
-                if (this.newTask.task == ''){
+        methods: {
+            addTask() {
+                if (this.newTask.task == '') {
                     return this.newTask.taskError = true;
-                } else{
+                } else {
                     this.newTask.taskError = false;
                 }
                 this.$emit('newTask', {

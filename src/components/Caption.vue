@@ -1,7 +1,7 @@
 <template>
-    <h1 >
-        <p>{{caption}} {{tasksCount}}</p>
-    </h1>
+	<h1>
+		<p>{{caption}} {{tasksCount}}</p>
+	</h1>
 </template>
 
 <script>
