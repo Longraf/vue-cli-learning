@@ -44,17 +44,22 @@ import ShowAndHidden from "./components/ShowAndHidden";
 	// console.log(this.tasks)
   },
   watch:{
+      isComplete(){
+          console.log('watcher is complete')
+      },
       tasks(){
+          // console.log(a);
           console.log('watch on taskS');
-          localStorage.setItem('tasks', JSON.stringify(this.tasks))
-      }, deep: true
+          localStorage.setItem('tasks', JSON.stringify(this.tasks));
+          // localStorage.setItem('tasks', JSON.stringify(this.tasks))
+      }, immediate: true
   },
   computed:{
   },
   methods:{
     CreateNewTask(data){
         this.tasks.push(data);
-        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+        // localStorage.setItem('tasks', JSON.stringify(this.tasks))
     },
     ChangeCount(value){
         this.count += value;
@@ -63,9 +68,10 @@ import ShowAndHidden from "./components/ShowAndHidden";
         this.tasks.splice(this.tasks.indexOf(task),1);
 		localStorage.setItem('tasks', JSON.stringify(this.tasks))
 	},
-    reloadTask(task){
-        this.tasks[this.tasks.indexOf(task)].isComplete = task.isComplete;
-        // localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    reloadTask(){
+        console.log('reloadTask');
+        // this.tasks[this.tasks.indexOf(task)].isComplete = task.isComplete;
+		localStorage.setItem('tasks', JSON.stringify(this.tasks))
     //     // task.isComplete = !task.isComplete;
     //     // this.tasks.splice(this.tasks.indexOf(task),1);
     //     // this.tasks.push(task);
