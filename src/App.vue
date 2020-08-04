@@ -19,7 +19,7 @@
 
 <script>
     //components
-    import Caption from "./components/Caption";
+    // import Caption from "./components/Caption";
     // import MyTask from "./components/MyTask";
     // import AddNewTask from "./components/AddNewTask"
     // import Counter from "./components/Counter";
@@ -114,7 +114,7 @@
         components: {
             // AddNewTask,
             // ChangeName,
-            Caption,
+            // Caption,
             // MyTask,
             // Counter,
             // ShowAndHidden,

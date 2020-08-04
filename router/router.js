@@ -6,7 +6,7 @@ import Counter from "../src/components/Counter";
 import ChangeName from "../src/components/ChangeName";
 import AddNewTask from "../src/components/AddNewTask";
 import MyTask from "../src/components/MyTask";
-// import Caption from "../src/components/Caption";
+import Caption from "../src/components/Caption";
 
 
 Vue.use(VueRouter)
@@ -35,6 +35,10 @@ let router = new VueRouter({
             path: '/',
             name: 'MyTask',
             component: MyTask
+        },{
+            path: '/',
+            name: 'Caption',
+            component: Caption
         },
     ]
 });
