@@ -50,7 +50,7 @@
                 this.tasks = JSON.parse(localStorage.getItem('tasks'));
             } else {
                 localStorage.setItem('tasks', JSON.stringify([]));
-                this.tasks = [];
+                this.tasks = {};
 				this.tasks = JSON.parse(localStorage.getItem('tasks'));
             }
         },
@@ -65,19 +65,24 @@
         computed: {},
         methods: {
             CreateNewTask(data) {
-                // console.log(data);
-                // console.log(this.tasks);
                 if (this.tasks == null) {
 					this.tasks = [];
 				}
-				this.tasks.push(data);
-
+                if (this.tasks.length == 0){
+					data.id = 0
+				} else {
+                    data.id = this.tasks[this.tasks.length-1].id + 1;
+				}
+                this.tasks.push(data)
+				console.log(this.tasks)
             },
             ChangeCount(value) {
                 this.count += value;
             },
             DeleteTask(task) {
-                this.tasks.splice(this.tasks.indexOf(task), 1);
+				let rezult = this.tasks.filter((item)=>{return item.id == task.id});
+                this.tasks.splice(this.tasks.indexOf(rezult), 1);
+
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
             ShowModal(boolean, newTask) {
@@ -108,6 +113,7 @@
 			ModalWindow
         }
     }
+
 </script>
 
 <style lang="scss">

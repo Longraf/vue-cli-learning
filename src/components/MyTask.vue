@@ -17,7 +17,8 @@
             isComplete: Boolean,
             task: Object,
             tasks: Array,
-			executionPeriod: [String, Number]
+			executionPeriod: [String, Number],
+			id: Number,
         },
         methods: {
             deleteTask(task) {
