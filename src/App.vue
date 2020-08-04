@@ -25,11 +25,6 @@
     import ShowAndHidden from "./components/ShowAndHidden";
     import ModalWindow from "./components/ModalWindow";
 
-    //filters
-    // import upperCase from "./filters/filter"
-
-    //data
-    // import {data} from './data/data';
 
     export default {
         name: 'App',
@@ -41,7 +36,8 @@
                 caption: 'Список задач: ',
                 showText: 'ss123',
                 tasks: [],
-								isShowModal: false,
+				isShowModal: false,
+				newTask: {},
                 // newTask: {}
             }
         },
@@ -98,7 +94,11 @@
             },
             ChangeOldTask(newTask){
                 this.isShowModal = false;
-
+                let findDataTask = this.tasks.filter(item=>item.id == newTask.id)[0]
+				findDataTask.task = newTask.task;
+				findDataTask.desc = newTask.desc;
+				findDataTask.extcutionPeriod = newTask.extcutionPeriod;
+				// this.tasks[this.tasks.indexOf()]
                 console.log('It is newTask');
                 console.log(newTask);
             }

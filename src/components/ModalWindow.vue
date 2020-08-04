@@ -4,9 +4,9 @@
             <div class="modal-window__close" @click="$emit('ClosePopup')"></div>
         </div>
 		<div class="vue-app__input-value-wrapper">
-			<input class="vue-app__input" placeholder="Введите задачу" type="text" v-model="this.ntask">
+			<input class="vue-app__input" placeholder="Введите задачу" type="text" v-model='task' />
 <!--                   v-bind:class="ntask.taskError ? 'input__red' : '' ">-->
-			<input class="vue-app__input" placeholder="Описание" type="text" v-model="this.newTask.desc">
+			<input class="vue-app__input" placeholder="Описание" type="text" v-model="desc">
 		</div>
 		<input @click="changeTask" type="submit" value="Сохранить изменения">
     </div>
@@ -21,29 +21,37 @@
                 desc: String,
                 taskError: Boolean,
                 isComplete: Boolean,
+                id: Number,
+                executionPeriod: [String, Number, Boolean]
             }
         },
-		data() {
-			return {
-                ntask : this.newTask.task
-			}
-		},
+        data() {
+            return{
+                task: this.newTask.task,
+                desc: this.newTask.desc,
+                executionPeriod: this.newTask.executionPeriod,
+                isComplete: this.newTask.isComplete
+            }
+        },
         methods: {
 			changeTask() {
+                console.log(this.task)
 				if (this.task == '') {
 					return this.newTask.taskError = true;
 				} else {
-                    console.log(this.Task);
 					this.newTask.taskError = false;
 				}
-
-				this.$emit('changeTask', {
-					// oldTask: this.newTask,
-					isComplete: this.newTask.isComplete,
-					task: this.value,
-					desc: this.newTask.desc,
-					executionPeriod: false,
-				});
+				// this.newTask = this.ntask;
+                let newTask = {
+                    // oldTask: this.newTask,
+                    id: this.newTask.id,
+                    isComplete: this.isComplete,
+                    task: this.task,
+                    desc: this.desc,
+                    executionPeriod: this.executionPeriod,
+                };
+				console.log(newTask);
+				this.$emit('changeTask', newTask);
 				// this.newTask.task = '';
 				// this.newTask.desc = '';
 			}
