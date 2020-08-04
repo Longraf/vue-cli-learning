@@ -4,7 +4,7 @@
             <div class="modal-window__close" @click="$emit('ClosePopup')"></div>
         </div>
 		<div class="vue-app__input-value-wrapper">
-			<input class="vue-app__input" placeholder="Введите задачу" type="text" :ntask="this.newTask.task">
+			<input class="vue-app__input" placeholder="Введите задачу" type="text" v-model="this.ntask">
 <!--                   v-bind:class="ntask.taskError ? 'input__red' : '' ">-->
 			<input class="vue-app__input" placeholder="Описание" type="text" v-model="this.newTask.desc">
 		</div>
@@ -38,9 +38,9 @@
 				}
 
 				this.$emit('changeTask', {
-					oldTask: this.newTask,
+					// oldTask: this.newTask,
 					isComplete: this.newTask.isComplete,
-					task: this.Task,
+					task: this.value,
 					desc: this.newTask.desc,
 					executionPeriod: false,
 				});
