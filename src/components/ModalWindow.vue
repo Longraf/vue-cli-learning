@@ -7,8 +7,12 @@
 			<input class="vue-app__input" placeholder="Введите задачу" type="text" v-model='task' />
 <!--                   v-bind:class="ntask.taskError ? 'input__red' : '' ">-->
 			<input class="vue-app__input" placeholder="Описание" type="text" v-model="desc">
+			<input class="vue-app__input" placeholder="Задайте период выполнения" type="text" v-model="executionPeriod ">
+
 		</div>
 		<input @click="changeTask" type="submit" value="Сохранить изменения">
+		<input @click="()=>this.$emit('ClosePopup', true)" type="submit" value="Отменить изменения">
+		<input @click="deleteTask" type="button" value="Удалить запись">
     </div>
 </template>
 
@@ -29,7 +33,7 @@
             return{
                 task: this.newTask.task,
                 desc: this.newTask.desc,
-                executionPeriod: this.newTask.executionPeriod,
+                executionPeriod: this.newTask.executionPeriod ? this.newTask.executionPeriod : '',
                 isComplete: this.newTask.isComplete
             }
         },
@@ -54,7 +58,10 @@
 				this.$emit('changeTask', newTask);
 				// this.newTask.task = '';
 				// this.newTask.desc = '';
-			}
+			},
+            deleteTask(task) {
+                this.$emit('delTask', task)
+            },
         }
     }
 </script>

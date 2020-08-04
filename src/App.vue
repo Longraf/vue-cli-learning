@@ -9,9 +9,9 @@
 
 		<AddNewTask v-on:newTask="CreateNewTask"/>
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask" v-on:changeTask="ChangeTask"/>
-		<button @click="isShowModal = true" type="button">Показать модальное окно</button>
+		<button @click="isShowModal = true " type="button">Показать модальное окно</button>
 		<ModalWindow @click="isShowModal = !isShowModal" v-if="isShowModal" :newTask="newTask"
-                     v-on:ClosePopup="isShowModal = false" v-on:changeTask="ChangeOldTask"/>
+            v-on:ClosePopup="isShowModal = false" v-on:changeTask="ChangeOldTask" v-on:delTask="DeleteTask"/>
 	</div>
 </template>
 
@@ -78,7 +78,7 @@
             DeleteTask(task) {
 				let rezult = this.tasks.filter((item)=>{return item.id == task.id});
                 this.tasks.splice(this.tasks.indexOf(rezult), 1);
-
+				this.isShowModal = false;
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
             ShowModal(boolean, newTask) {
@@ -92,7 +92,10 @@
                 // console.log(newTask);
                 this.ShowModal(true, newTask)
             },
-            ChangeOldTask(newTask){
+			AddNewTask() {
+
+			},
+            ChangeOldTask(newTask) {
                 this.isShowModal = false;
                 let findDataTask = this.tasks.filter(item=>item.id == newTask.id)[0]
 				findDataTask.task = newTask.task;
@@ -101,7 +104,10 @@
 				// this.tasks[this.tasks.indexOf()]
                 console.log('It is newTask');
                 console.log(newTask);
-            }
+            },
+            ClosePopup() {
+                this.isShowModal = false
+			}
         },
         components: {
             AddNewTask,
