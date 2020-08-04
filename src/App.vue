@@ -86,15 +86,14 @@
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
             ShowModal(boolean, newTask) {
-                console.log(boolean);
                 console.log(newTask);
+				this.isShowModal = boolean;
                 this.newTask = newTask;
-                this.isShowModal = boolean;
 
 
             },
             ChangeTask(newTask) {
-                console.log(newTask);
+                // console.log(newTask);
                 this.ShowModal(true, newTask)
             },
             ChangeOldTask(newTask){
