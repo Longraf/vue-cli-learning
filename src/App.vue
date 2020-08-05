@@ -1,15 +1,16 @@
 <template>
 	<div class="vue-app" id="vue-app">
 		<router-view>
-			<ChangeName v-bind:text="text"></ChangeName>
-			<Counter v-bind:count="count" v-on:count="ChangeCount"/>
-
-			<ShowAndHidden v-model="isShow"/>
-			<Caption :caption="caption" :tasksCount="tasks ? tasks.length : 0"/>
-			<AddNewTask v-on:newTask="CreateNewTask"/>
-			<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask" v-on:changeTask="ChangeTask"/>
-
+			<ToDoItem/>
 		</router-view>
+		<!--<ChangeName v-bind:text="text"></ChangeName>-->
+		<!--<ShowAndHidden v-model="isShow"/>-->
+		<Counter v-bind:count="count" v-on:count="ChangeCount"/>
+
+
+		<Caption :caption="caption" :tasksCount="tasks ? tasks.length : 0"/>
+		<AddNewTask v-on:newTask="CreateNewTask"/>
+		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:delTask="DeleteTask" v-on:changeTask="ChangeTask"/>
 
 		<button @click="isShowModal = true " type="button">Показать модальное окно</button>
 		<ModalWindow @click="isShowModal = !isShowModal" v-if="isShowModal" :newTask="newTask"
@@ -19,10 +20,10 @@
 
 <script>
     //components
-    // import Caption from "./components/Caption";
-    // import MyTask from "./components/MyTask";
-    // import AddNewTask from "./components/AddNewTask"
-    // import Counter from "./components/Counter";
+    import Caption from "./components/Caption";
+    import MyTask from "./components/MyTask";
+    import AddNewTask from "./components/AddNewTask"
+    import Counter from "./components/Counter";
     // import ChangeName from "./components/ChangeName";
     // import ShowAndHidden from "./components/ShowAndHidden";
     import ModalWindow from "./components/ModalWindow";
@@ -30,6 +31,15 @@
 
     export default {
         name: 'App',
+		components: {
+			AddNewTask,
+			// ChangeName,
+			Caption,
+			MyTask,
+			Counter,
+			// ShowAndHidden,
+			ModalWindow
+		},
         data() {
             return {
                 count: 112,
@@ -40,7 +50,6 @@
                 tasks: [],
 				isShowModal: false,
 				newTask: {},
-                // newTask: {}
             }
         },
         created() {
@@ -111,15 +120,6 @@
                 this.isShowModal = false
 			}
         },
-        components: {
-            // AddNewTask,
-            // ChangeName,
-            // Caption,
-            // MyTask,
-            // Counter,
-            // ShowAndHidden,
-			ModalWindow
-        }
     }
 
 </script>
