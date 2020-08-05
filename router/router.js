@@ -14,7 +14,10 @@ let router = new VueRouter({
         {
             path: '/',
             name: 'index',
-            component: index
+            component: index,
+            props: {
+
+            }
         },
         {
             path: '/todo-list',

@@ -1,6 +1,6 @@
 <template>
-	<div class="container">
-		<h1>ToDo item page</h1>
+	<div class="vue-app__container">
+		<h3>ToDo item page</h3>
 	</div>
 </template>
 

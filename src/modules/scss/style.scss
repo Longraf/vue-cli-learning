@@ -20,7 +20,32 @@ p {
   text-align: center;
   color: #2c3e50;
   background-color: orange;
-  padding-top: 20px;
+  display: flex;
+  //padding-top: 20px;
+  &__sidebar{
+    border-right: 1px solid red;
+    padding: 5px 5px 0;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__sidebar-list{
+    text-align: left;
+    padding: 2px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 20px;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  .router-link-exact-active{
+    font-weight: bold;
+  }
+  &__container{
+    width: 100%;
+    align-self: center;
+  }
   &__caption{
     margin: 0;
     padding: 15px 0;
@@ -70,20 +95,6 @@ p {
 
   &__input{
     margin: 5px;
-  }
-  ul{
-    margin: 10px 0;
-  }
-  li{
-    list-style-type: none;
-    a{
-      text-decoration: none;
-      color: #2c3e50;
-      font-size: 20px;
-      &:hover{
-        text-decoration: underline;
-      }
-    }
   }
 
 }

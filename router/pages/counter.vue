@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="vue-app__container">
         <h3>Counter page</h3>
         <Counter v-bind:count="count" v-on:count="ChangeCount"/>
     </div>
