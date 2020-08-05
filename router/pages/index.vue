@@ -1,7 +1,20 @@
 <template>
 	<div class="container">
 		<h1>Index list page</h1>
-		<Counter v-bind:count="count" v-on:count="ChangeCount"/>
+		<nav>
+			<ul>
+				<li>
+					<router-link to="/todo-list">Todo-list</router-link>
+				</li>
+				<li>
+					<router-link to="/todo-item">Todo-item</router-link>
+				</li>
+				<li>
+					<router-link to="/counter">Counter page</router-link>
+				</li>
+			</ul>
+		</nav>
+
 
 
 		<Caption :caption="caption" :tasksCount="tasks ? tasks.length : 0"/>
@@ -13,24 +26,14 @@
 		<ModalWindow :newTask="newTask" @click="isShowModal = !isShowModal" v-if="isShowModal"
 			v-on:ClosePopup="isShowModal = false" v-on:changeTask="ChangeOldTask" v-on:delTask="DeleteTask"/>
 
-		<nav>
-			<ul>
-				<li>
-					<router-link to="/todo-list">go to todo-list</router-link>
-				</li>
-				<li>
-					<router-link to="/todo-item">go to todo-item</router-link>
-				</li>
-			</ul>
-		</nav>
+
 	</div>
 </template>
 
 <script>
     import Caption from "../../src/components/Caption";
     import MyTask from "../../src/components/MyTask";
-    import AddNewTask from "../../src/components/AddNewTask"
-    import Counter from "../../src/components/Counter";
+    import AddNewTask from "../../src/components/AddNewTask";
     import ModalWindow from "../../src/components/ModalWindow";
 
     export default {
@@ -39,7 +42,6 @@
             AddNewTask,
             Caption,
             MyTask,
-            Counter,
             ModalWindow
         },
         data() {

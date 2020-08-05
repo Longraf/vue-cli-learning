@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import index from '../router/pages/index';
 import todoList from '../router/pages/todo-list';
 import todoItem from '../router/pages/todo-item';
+import Counter from "../router/pages/counter";
 
 
 Vue.use(VueRouter);
@@ -25,6 +26,12 @@ let router = new VueRouter({
             name: 'todo-item',
             component: todoItem
         },
+        {
+            path: '/counter',
+            name: 'counter',
+            component: Counter
+        },
+
     ]
 });
 
