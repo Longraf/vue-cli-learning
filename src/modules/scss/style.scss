@@ -53,14 +53,13 @@ p {
   &__input-value-wrapper{
     display: flex;
     flex-direction: column;
-    padding-top: 16px;
   }
 
   &__input-value{
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin-bottom: 10px;
+    margin: 10px 0 10px;
     .input__red{
       border: 2px solid red;
       &::placeholder{
@@ -140,8 +139,8 @@ p {
   }
 
   &__submit{
-    height: 52px;
     margin-top: 5px;
+    height: 83px;
   }
 
   &__delete{

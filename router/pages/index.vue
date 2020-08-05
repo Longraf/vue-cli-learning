@@ -113,7 +113,7 @@
 
                 findDataTask.task = newTask.task;
                 findDataTask.desc = newTask.desc;
-                findDataTask.extcutionPeriod = newTask.extcutionPeriod;
+                findDataTask.executionPeriod = newTask.executionPeriod;
 
                 console.log('It is newTask');
                 console.log(newTask);
