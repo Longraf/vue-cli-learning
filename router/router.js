@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import ToDoItem from "../src/components/ToDoItem";
+import index from '../router/pages/index';
+import todoList from '../router/pages/todo-list';
+import todoItem from '../router/pages/todo-item';
 
 
 Vue.use(VueRouter);
@@ -9,10 +11,20 @@ Vue.use(VueRouter);
 let router = new VueRouter({
     routes: [
         {
-            path: '/todo',
-            name: 'todo',
-            component: ToDoItem
-        }
+            path: '/',
+            name: 'index',
+            component: index
+        },
+        {
+            path: '/todo-list',
+            name: 'todo-list',
+            component: todoList
+        },
+        {
+            path: '/todo-item',
+            name: 'todo-item',
+            component: todoItem
+        },
     ]
 });
 
