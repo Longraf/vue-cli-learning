@@ -28,11 +28,7 @@
 		},
 		data() {
 			return {
-				isShow: true,
-				showText: 'ss123',
-				tasks: [],
 				isShowModal: false,
-				newTask: {},
 			}
 		},
 		created() {

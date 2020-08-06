@@ -10,8 +10,8 @@ export default new Vuex.Store({
     caption: 'Список задач: '
   },
   mutations: {
-    increment: state=> {
-      state.count++
+    incrementCount (state, increment) {
+      state.count += increment
     }
   },
   actions: {
