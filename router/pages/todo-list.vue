@@ -2,7 +2,7 @@
 	<div class="vue-app__container">
 		<h2>{{$store.getters.getCaption}} {{$store.getters.getTasks.length}}</h2>
 <!--		<AddNewTask v-on:newTask="CreateNewTask"/>-->
-		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:changeTask="ChangeTask"
+		<MyTask :key="task.id" :task="task" v-for="task in tasks" v-on:changeTask="ChangeTask"
 				v-on:delTask="DeleteTask"/>
 
 		<button @click="isShowModal = true " type="button">Добавить новую задачу</button>
@@ -25,14 +25,7 @@
 		},
 		data() {
 			return {
-				count: 112,
-				text: "Привет",
-				isShow: true,
-				caption: 'Список задач: ',
-				showText: 'ss123',
-				tasks: [],
 				isShowModal: false,
-				newTask: {},
 			}
 		},
 		created() {

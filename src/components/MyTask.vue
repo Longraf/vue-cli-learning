@@ -22,11 +22,9 @@
         },
         methods: {
             deleteTask(task) {
-                // console.log(task);
                 this.$emit('delTask', task)
             },
 			changeTask(task){
-                // console.log(task);
                 this.$emit('changeTask', task)
 			},
             isCompleted(task) {
