@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import router from "../router/router";
+	import router from "../router/router";
     import Sidebar from "./components/Sidebar";
 
     export default {

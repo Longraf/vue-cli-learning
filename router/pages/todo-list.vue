@@ -1,6 +1,6 @@
 <template>
 	<div class="vue-app__container">
-		<Caption :caption="$store.getters.getCaption" :tasksCount="tasks ? tasks.length : 0"/>
+		<h2>{{$store.getters.getCaption}} {{$store.getters.getTasks.length}}</h2>
 <!--		<AddNewTask v-on:newTask="CreateNewTask"/>-->
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:changeTask="ChangeTask"
 				v-on:delTask="DeleteTask"/>
@@ -13,7 +13,6 @@
 
 <script>
 
-	import Caption from "../../src/components/Caption";
 	import MyTask from "../../src/components/MyTask";
 	// import AddNewTask from "../../src/components/AddNewTask";
 	import ModalWindow from "../../src/components/ModalWindow";
@@ -21,23 +20,28 @@
     export default {
         name: "todo-list",
 		components: {
-			// AddNewTask,
-			Caption,
 			MyTask,
 			ModalWindow
 		},
 		data() {
 			return {
+				count: 112,
+				text: "Привет",
+				isShow: true,
+				caption: 'Список задач: ',
+				showText: 'ss123',
+				tasks: [],
 				isShowModal: false,
+				newTask: {},
 			}
 		},
 		created() {
-			if (this.$store.getters.getTasks) {
+			if (localStorage.getItem('tasks')) {
 				this.tasks = this.$store.getters.getTasks;
 			} else {
 				localStorage.setItem('tasks', JSON.stringify([]));
 				this.tasks = {};
-				this.tasks = this.$store.getters.getTasks;
+				this.tasks = JSON.parse(localStorage.getItem('tasks'));
 			}
 		},
 		watch: {
@@ -53,32 +57,23 @@
 				this.count += value;
 			},
 			DeleteTask(task) {
-				let result = this.tasks.filter((item) => {
-					return item.id === task.id
-				});
-				this.tasks.splice(this.tasks.indexOf(result), 1);
-				this.isShowModal = false;
+				let findDataTask = this.tasks.filter(item => item.id === task.id)[0];
+				findDataTask.task = task.task;
+				findDataTask.desc = task.desc;
+				findDataTask.executionPeriod = task.executionPeriod;
+				this.tasks.splice(this.tasks.indexOf(findDataTask), 1);
 				localStorage.setItem('tasks', JSON.stringify(this.tasks))
 			},
-			ShowModal(boolean, newTask) {
-				console.log(newTask);
-				this.isShowModal = boolean;
-				this.newTask = newTask;
-
-
-			},
-			ChangeTask(newTask) {
-				// this.$router
-				console.log(newTask)
+			ChangeTask() {
 			},
 			AddTask(newTask) {
-				console.log(newTask)
+				if (this.tasks.length == 0 ) {
+					newTask.id = 0
+				} else {
+					newTask.id = this.tasks[this.tasks.length-1].id + 1
+				}
 				this.isShowModal = false;
 				this.tasks.push(newTask)
-				// let findDataTask = this.tasks.filter(item => item.id === newTask.id)[0];
-
-				console.log('It is newTask');
-				console.log(newTask);
 			},
 			ClosePopup() {
 				this.isShowModal = false

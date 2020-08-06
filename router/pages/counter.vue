@@ -20,7 +20,6 @@
         },
         components: {
             Counter,
-
         }
     }
 
