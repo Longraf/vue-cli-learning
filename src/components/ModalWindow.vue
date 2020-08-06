@@ -10,54 +10,43 @@
 			<input class="vue-app__input" placeholder="Задайте период выполнения" type="text" v-model="executionPeriod ">
 
 		</div>
-		<input @click="changeTask" type="submit" value="Сохранить изменения">
-		<input @click="()=>this.$emit('ClosePopup', true)" type="submit" value="Отменить изменения">
-		<input @click="deleteTask" type="button" value="Удалить запись">
+		<input @click="changeTask" type="submit" value="Добавить запись">
+		<input @click="()=>this.$emit('ClosePopup', true)" type="submit" value="Отменить добавление">
+<!--		<input @click="deleteTask" type="button" value="Удалить запись">-->
     </div>
 </template>
 
 <script>
     export default {
         name: 'ModalWindow',
-        props: {
-            newTask: {
-                task: String,
-                desc: String,
-                taskError: Boolean,
-                isComplete: Boolean,
-                id: Number,
-                executionPeriod: [String, Number, Boolean]
-            }
-        },
         data() {
             return{
-                task: this.newTask.task,
-                desc: this.newTask.desc,
-                executionPeriod: this.newTask.executionPeriod ? this.newTask.executionPeriod : '',
-                isComplete: this.newTask.isComplete
+                task: '',
+                desc: '',
+                executionPeriod: '',
+                isComplete: this.isComplete
             }
         },
         methods: {
 			changeTask() {
                 console.log(this.task)
 				if (this.task == '') {
-					return this.newTask.taskError = true;
+					return this.taskError = true;
 				} else {
-					this.newTask.taskError = false;
+					this.taskError = false;
 				}
-				// this.newTask = this.ntask;
+				// this = this.ntask;
                 let newTask = {
-                    // oldTask: this.newTask,
-                    id: this.newTask.id,
-                    isComplete: this.isComplete,
+                    // oldTask: this,
+                    isComplete: false,
                     task: this.task,
                     desc: this.desc,
                     executionPeriod: this.executionPeriod,
                 };
 				console.log(newTask);
-				this.$emit('changeTask', newTask);
-				// this.newTask.task = '';
-				// this.newTask.desc = '';
+				this.$emit('addTask', newTask);
+				// this.task = '';
+				// this.desc = '';
 			},
             deleteTask(task) {
                 this.$emit('delTask', task)

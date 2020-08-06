@@ -5,9 +5,9 @@
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:changeTask="ChangeTask"
 				v-on:delTask="DeleteTask"/>
 
-<!--		<button @click="isShowModal = true " type="button">Показать модальное окно</button>-->
-		<ModalWindow :newTask="newTask" @click="isShowModal = !isShowModal" v-if="isShowModal"
-		v-on:ClosePopup="isShowModal = false" v-on:changeTask="ChangeOldTask" v-on:delTask="DeleteTask"/>
+		<button @click="isShowModal = true " type="button">Добавить новую задачу</button>
+		<ModalWindow @click="isShowModal = !isShowModal" v-if="isShowModal"
+		v-on:ClosePopup="isShowModal = false" v-on:addTask="AddTask" v-on:delTask="DeleteTask"/>
 	</div>
 </template>
 
@@ -56,19 +56,6 @@
 			},
 		},
 		methods: {
-			CreateNewTask(data) {
-				console.log('CreateNewTask')
-				if (this.tasks == null) {
-					this.tasks = [];
-				}
-				if (this.tasks.length === 0) {
-					data.id = 0
-				} else {
-					data.id = this.tasks[this.tasks.length - 1].id + 1;
-				}
-				this.tasks.push(data);
-				console.log(this.tasks)
-			},
 			ChangeCount(value) {
 				this.count += value;
 			},
@@ -88,15 +75,14 @@
 
 			},
 			ChangeTask(newTask) {
-				this.ShowModal(true, newTask)
+				// this.$router
+				console.log(newTask)
 			},
-			ChangeOldTask(newTask) {
+			AddTask(newTask) {
+				console.log(newTask)
 				this.isShowModal = false;
-				let findDataTask = this.tasks.filter(item => item.id === newTask.id)[0];
-
-				findDataTask.task = newTask.task;
-				findDataTask.desc = newTask.desc;
-				findDataTask.executionPeriod = newTask.executionPeriod;
+				this.tasks.push(newTask)
+				// let findDataTask = this.tasks.filter(item => item.id === newTask.id)[0];
 
 				console.log('It is newTask');
 				console.log(newTask);
