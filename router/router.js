@@ -5,6 +5,7 @@ import index from '../router/pages/index';
 import todoList from '../router/pages/todo-list';
 import todoItem from '../router/pages/todo-item';
 import Counter from "../router/pages/counter";
+import AddNewTask from "../src/components/AddNewTask";
 
 
 Vue.use(VueRouter);
@@ -15,9 +16,7 @@ let router = new VueRouter({
             path: '/',
             name: 'index',
             component: index,
-            props: {
-
-            }
+            props: {}
         },
         {
             path: '/todo-list',
@@ -34,6 +33,11 @@ let router = new VueRouter({
             name: 'counter',
             component: Counter
         },
+        {
+            path: '/new-task',
+            name: 'new-task',
+            component: AddNewTask,
+        }
 
     ]
 });

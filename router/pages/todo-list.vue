@@ -1,11 +1,11 @@
 <template>
 	<div class="vue-app__container">
 		<Caption :caption="caption" :tasksCount="tasks ? tasks.length : 0"/>
-		<AddNewTask v-on:newTask="CreateNewTask"/>
+<!--		<AddNewTask v-on:newTask="CreateNewTask"/>-->
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:changeTask="ChangeTask"
 				v-on:delTask="DeleteTask"/>
 
-		<button @click="isShowModal = true " type="button">Показать модальное окно</button>
+<!--		<button @click="isShowModal = true " type="button">Показать модальное окно</button>-->
 		<ModalWindow :newTask="newTask" @click="isShowModal = !isShowModal" v-if="isShowModal"
 		v-on:ClosePopup="isShowModal = false" v-on:changeTask="ChangeOldTask" v-on:delTask="DeleteTask"/>
 	</div>
@@ -15,13 +15,13 @@
 
 	import Caption from "../../src/components/Caption";
 	import MyTask from "../../src/components/MyTask";
-	import AddNewTask from "../../src/components/AddNewTask";
+	// import AddNewTask from "../../src/components/AddNewTask";
 	import ModalWindow from "../../src/components/ModalWindow";
 
     export default {
         name: "todo-list",
 		components: {
-			AddNewTask,
+			// AddNewTask,
 			Caption,
 			MyTask,
 			ModalWindow
@@ -57,6 +57,7 @@
 		},
 		methods: {
 			CreateNewTask(data) {
+				console.log('CreateNewTask')
 				if (this.tasks == null) {
 					this.tasks = [];
 				}
