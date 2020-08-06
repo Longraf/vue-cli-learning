@@ -8,13 +8,21 @@ export default new Vuex.Store({
         count: 33,
         tasks: JSON.parse(localStorage.getItem('tasks')),
         caption: 'Список задач: ',
+        isShowModal: false
     },
     mutations: {
         incrementCount (state, increment) {
             state.count += increment
+            console.log('incrementCount = ' + state.count)
+        },
+        changeIsShowModal (state) {
+            state.isShowModal = !state.isShowModal;
+            console.log(state.isShowModal)
         }
+
     },
     actions: {
+
     },
     modules: {
 
@@ -26,8 +34,14 @@ export default new Vuex.Store({
         getTasks(state) {
             return state.tasks
         },
+        getTasksLength(state) {
+            return state.tasks.length
+        },
         getCaption(state) {
             return state.caption
+        },
+        getIsShowModal(state) {
+            return state.isShowModal
         }
 
     }

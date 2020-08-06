@@ -1,7 +1,7 @@
 <template>
     <div class="modal-window">
         <div class="modal-window__close-wrapper">
-            <div class="modal-window__close" @click="$emit('ClosePopup')"></div>
+            <div class="modal-window__close" @click="this.changeIsShowModal"></div>
         </div>
 		<div class="vue-app__input-value-wrapper">
 			<input class="vue-app__input" placeholder="Введите задачу" type="text" v-model='task' />
@@ -11,12 +11,13 @@
 
 		</div>
 		<input @click="changeTask" type="submit" value="Добавить запись">
-		<input @click="()=>this.$emit('ClosePopup', true)" type="submit" value="Отменить добавление">
+		<input @click="this.changeIsShowModal" type="submit" value="Отменить добавление">
 <!--		<input @click="deleteTask" type="button" value="Удалить запись">-->
     </div>
 </template>
 
 <script>
+	import {mapMutations} from 'vuex';
     export default {
         name: 'ModalWindow',
         data() {
@@ -28,6 +29,9 @@
             }
         },
         methods: {
+			...mapMutations([
+				'changeIsShowModal'
+			]),
 			changeTask() {
                 console.log(this.task)
 				if (this.task == '') {

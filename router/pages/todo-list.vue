@@ -1,13 +1,13 @@
 <template>
 	<div class="vue-app__container">
-		<h2>{{$store.getters.getCaption}} {{$store.getters.getTasks.length}}</h2>
+		<h2>{{getCaption}} {{getTasks.length}}</h2>
 <!--		<AddNewTask v-on:newTask="CreateNewTask"/>-->
-		<MyTask :key="task.id" :task="task" v-for="task in tasks" v-on:changeTask="ChangeTask"
+		<MyTask :key="task.id" :task="task" v-for="task in getTasks" v-on:changeTask="ChangeTask"
 				v-on:delTask="DeleteTask"/>
 
-		<button @click="isShowModal = true " type="button">Добавить новую задачу</button>
-		<ModalWindow @click="isShowModal = !isShowModal" v-if="isShowModal"
-		v-on:ClosePopup="isShowModal = false" v-on:addTask="AddTask" v-on:delTask="DeleteTask"/>
+		<button @click="changeIsShowModal" type="button">Добавить новую задачу</button>
+		<ModalWindow v-if="getIsShowModal"
+		v-on:addTask="AddTask" v-on:delTask="DeleteTask"/>
 	</div>
 </template>
 
@@ -16,6 +16,8 @@
 	import MyTask from "../../src/components/MyTask";
 	// import AddNewTask from "../../src/components/AddNewTask";
 	import ModalWindow from "../../src/components/ModalWindow";
+	import {mapGetters, mapMutations} from 'vuex';
+
 
     export default {
         name: "todo-list",
@@ -23,10 +25,13 @@
 			MyTask,
 			ModalWindow
 		},
-		data() {
-			return {
-				isShowModal: false,
-			}
+		computed: {
+			...mapGetters([
+				'getTasks',
+				'getTasksLength',
+				'getCaption',
+				'getIsShowModal'
+			])
 		},
 		created() {
 			if (localStorage.getItem('tasks')) {
@@ -46,6 +51,9 @@
 			},
 		},
 		methods: {
+			...mapMutations([
+				'changeIsShowModal'
+			]),
 			ChangeCount(value) {
 				this.count += value;
 			},
@@ -60,7 +68,7 @@
 			ChangeTask() {
 			},
 			AddTask(newTask) {
-				if (this.tasks.length == 0 ) {
+				if (this.getTasksLength == 0 ) {
 					newTask.id = 0
 				} else {
 					newTask.id = this.tasks[this.tasks.length-1].id + 1
@@ -69,7 +77,7 @@
 				this.tasks.push(newTask)
 			},
 			ClosePopup() {
-				this.isShowModal = false
+
 			}
 		}
     }
