@@ -1,6 +1,6 @@
 <template>
 	<div class="vue-app__container">
-		<Caption :caption="caption" :tasksCount="tasks ? tasks.length : 0"/>
+		<Caption :caption="$store.getters.getCaption" :tasksCount="tasks ? tasks.length : 0"/>
 <!--		<AddNewTask v-on:newTask="CreateNewTask"/>-->
 		<MyTask :key="task.id" :task="task" :tasks="tasks" v-for="task in tasks" v-on:changeTask="ChangeTask"
 				v-on:delTask="DeleteTask"/>
@@ -28,10 +28,7 @@
 		},
 		data() {
 			return {
-				count: 112,
-				text: "Привет",
 				isShow: true,
-				caption: 'Список задач: ',
 				showText: 'ss123',
 				tasks: [],
 				isShowModal: false,
@@ -39,12 +36,12 @@
 			}
 		},
 		created() {
-			if (localStorage.getItem('tasks')) {
-				this.tasks = JSON.parse(localStorage.getItem('tasks'));
+			if (this.$store.getters.getTasks) {
+				this.tasks = this.$store.getters.getTasks;
 			} else {
 				localStorage.setItem('tasks', JSON.stringify([]));
 				this.tasks = {};
-				this.tasks = JSON.parse(localStorage.getItem('tasks'));
+				this.tasks = this.$store.getters.getTasks;
 			}
 		},
 		watch: {

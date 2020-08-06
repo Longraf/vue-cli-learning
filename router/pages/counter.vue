@@ -12,16 +12,18 @@
         name: 'counter',
         data() {
             return {
-                count: 20
+                count: this.$store.getters.getCount,
             }
         },
         methods: {
-            ChangeCount(value) {
-                this.count += value;
+            ChangeCount() {
+
+
             },
         },
         components: {
-            Counter
+            Counter,
+
         }
     }
 
