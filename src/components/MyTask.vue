@@ -31,7 +31,7 @@
 			]),
 			GoToTaskPage(){
 				console.log('task.id = ' + this.task.id);
-				this.$router.push({ path: '/change-page' })
+				this.$router.push({ name: 'change-task', params: {id : this.task.id} })
 			},
         }
     }

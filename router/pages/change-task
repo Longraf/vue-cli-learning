@@ -1,7 +1,7 @@
 <template>
     <div class="vue-app__container">
         <h3>Change task</h3>
-        <ChangeTask />
+        <ChangeTaskComponent />
     </div>
 </template>
 

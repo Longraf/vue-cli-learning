@@ -28,7 +28,7 @@ let router = new VueRouter({
             component: Counter
         },
         {
-            path: '/change-task',
+            path: '/change-task:id',
             name: 'change-task',
             component: ChangeTask,
         }

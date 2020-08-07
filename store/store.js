@@ -20,7 +20,6 @@ export default new Vuex.Store({
         deleteTask (state, task) {
             state.tasks.splice(state.tasks.indexOf(task), 1);
             localStorage.setItem('tasks', JSON.stringify(state.tasks))
-
         },
         addTasksInLocalStorage (state) {
             localStorage.setItem('tasks', JSON.stringify(state.tasks))
@@ -52,6 +51,16 @@ export default new Vuex.Store({
         },
         getTasksLength(state) {
             return state.tasks.length
+        },
+        // getTaskById(state) {
+        //     return (id) => {
+        //         state.tasks[id]
+        //     };
+        //
+        //     // return state.tasks.filter(item => item.id === id);
+        // },
+        getSomeThing (state, getters) {
+            return state(getters)
         },
         getCaption(state) {
             return state.caption
