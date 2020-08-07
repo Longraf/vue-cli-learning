@@ -5,9 +5,9 @@
 			<h3 :class="task.isComplete ? 'task__caption--complete' : ''" class="task__caption">{{ task.task }}</h3>
 			<p :class="task.isComplete ? 'task__text--complete' : ''" class="task__text">{{ task.desc }}</p>
 		</div>
-		<a href="/change-task">
-			<button @click="changeTask(task)" class="btn btn__change">Редактировать</button>
-		</a>
+<!--		<a href="change-task#/change-task">-->
+			<button @click="()=>this.$router.push({ path: '/change-task' })" class="btn btn__change">Редактировать</button>
+<!--		</a>-->
 
 		<button @click="deleteTask(task)" class="btn btn__delete">Удалить</button>
 	</div>
