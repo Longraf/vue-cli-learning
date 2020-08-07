@@ -5,12 +5,17 @@
 			<h3 :class="task.isComplete ? 'task__caption--complete' : ''" class="task__caption">{{ task.task }}</h3>
 			<p :class="task.isComplete ? 'task__text--complete' : ''" class="task__text">{{ task.desc }}</p>
 		</div>
-		<button @click="changeTask(task)" class="btn btn__change">Редактировать</button>
+		<a href="/change-task">
+			<button @click="changeTask(task)" class="btn btn__change">Редактировать</button>
+		</a>
+
 		<button @click="deleteTask(task)" class="btn btn__delete">Удалить</button>
 	</div>
 </template>
 
 <script>
+	import {mapMutations} from 'vuex'
+
     export default {
         name: 'MyTask',
         props: {
@@ -21,15 +26,9 @@
 			id: Number,
         },
         methods: {
-            deleteTask(task) {
-                this.$emit('delTask', task)
-            },
-			changeTask(task){
-                this.$emit('changeTask', task)
-			},
-            isCompleted(task) {
-                this.$emit('isComplete', task)
-            }
+			...mapMutations([
+				'deleteTask'
+			]),
         }
     }
 </script>

@@ -12,12 +12,28 @@ export default new Vuex.Store({
     },
     mutations: {
         incrementCount (state, increment) {
-            state.count += increment
-            console.log('incrementCount = ' + state.count)
+            state.count += increment;
         },
         changeIsShowModal (state) {
             state.isShowModal = !state.isShowModal;
-            console.log(state.isShowModal)
+        },
+        deleteTask (state, task) {
+            state.tasks.splice(state.tasks.indexOf(task), 1);
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
+
+        },
+        addTasksInLocalStorage (state) {
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
+        },
+        addTaskInSore (state, newTask) {
+            console.log('This is addTaskInStore');
+            if (this.getTasksLength == 0 ) {
+                newTask.id = 0
+            } else {
+                newTask.id = state.tasks[state.tasks.length - 1].id + 1
+            }
+            state.tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
         }
 
     },
@@ -42,7 +58,6 @@ export default new Vuex.Store({
         },
         getIsShowModal(state) {
             return state.isShowModal
-        }
-
+        },
     }
 })

@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 
 import index from '../router/pages/index';
 import todoList from '../router/pages/todo-list';
-import todoItem from '../router/pages/todo-item';
 import Counter from "../router/pages/counter";
 import ChangeTask from "../src/components/ChangeTask";
 
@@ -22,11 +21,6 @@ let router = new VueRouter({
             path: '/todo-list',
             name: 'todo-list',
             component: todoList
-        },
-        {
-            path: '/todo-item',
-            name: 'todo-item',
-            component: todoItem
         },
         {
             path: '/counter',

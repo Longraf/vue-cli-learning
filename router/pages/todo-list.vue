@@ -2,12 +2,10 @@
 	<div class="vue-app__container">
 		<h2>{{getCaption}} {{getTasks.length}}</h2>
 <!--		<AddNewTask v-on:newTask="CreateNewTask"/>-->
-		<MyTask :key="task.id" :task="task" v-for="task in getTasks" v-on:changeTask="ChangeTask"
-				v-on:delTask="DeleteTask"/>
+		<MyTask :key="task.id" :task="task" v-for="task in this.getTasks"/>
 
 		<button @click="changeIsShowModal" type="button">Добавить новую задачу</button>
-		<ModalWindow v-if="getIsShowModal"
-		v-on:addTask="AddTask" v-on:delTask="DeleteTask"/>
+		<ModalWindow v-if="getIsShowModal"/>
 	</div>
 </template>
 
@@ -35,10 +33,11 @@
 		},
 		created() {
 			if (localStorage.getItem('tasks')) {
-				this.tasks = this.$store.getters.getTasks;
+				this.tasks = this.getTasks;
 			} else {
 				localStorage.setItem('tasks', JSON.stringify([]));
 				this.tasks = {};
+
 				this.tasks = JSON.parse(localStorage.getItem('tasks'));
 			}
 		},
@@ -52,33 +51,30 @@
 		},
 		methods: {
 			...mapMutations([
-				'changeIsShowModal'
+				'changeIsShowModal',
+
 			]),
 			ChangeCount(value) {
 				this.count += value;
 			},
-			DeleteTask(task) {
-				let findDataTask = this.tasks.filter(item => item.id === task.id)[0];
-				findDataTask.task = task.task;
-				findDataTask.desc = task.desc;
-				findDataTask.executionPeriod = task.executionPeriod;
-				this.tasks.splice(this.tasks.indexOf(findDataTask), 1);
-				localStorage.setItem('tasks', JSON.stringify(this.tasks))
-			},
-			ChangeTask() {
-			},
-			AddTask(newTask) {
-				if (this.getTasksLength == 0 ) {
-					newTask.id = 0
-				} else {
-					newTask.id = this.tasks[this.tasks.length-1].id + 1
-				}
-				this.isShowModal = false;
-				this.tasks.push(newTask)
-			},
-			ClosePopup() {
-
-			}
+			// DeleteTask(task) {
+			//
+			// 	let findDataTask = this.tasks.filter(item => item.id === task.id)[0];
+			// 	findDataTask.task = task.task;
+			// 	findDataTask.desc = task.desc;
+			// 	findDataTask.executionPeriod = task.executionPeriod;
+			// 	this.tasks.splice(this.tasks.indexOf(findDataTask), 1);
+			// 	localStorage.setItem('tasks', JSON.stringify(this.tasks))
+			// },
+			// AddTask(newTask) {
+			// 	if (this.getTasksLength == 0 ) {
+			// 		newTask.id = 0
+			// 	} else {
+			// 		newTask.id = this.tasks[this.tasks.length-1].id + 1
+			// 	}
+			// 	this.isShowModal = false;
+			// 	this.tasks.push(newTask)
+			// },
 		}
     }
 </script>

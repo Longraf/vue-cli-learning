@@ -85,18 +85,17 @@ p {
     justify-content: center;
     flex-direction: row;
     margin: 10px 0 10px;
-    .input__red{
-      border: 2px solid red;
-      &::placeholder{
-        color: red;
-      }
-    }
   }
 
   &__input{
     margin: 5px;
   }
-
+  .input__red{
+    border: 2px solid red;
+    &::placeholder{
+      color: red;
+    }
+  }
 }
 
 .task{
