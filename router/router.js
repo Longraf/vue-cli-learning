@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import index from '../router/pages/index';
 import todoList from '../router/pages/todo-list';
 import Counter from "../router/pages/counter";
-import ChangeTask from "../src/components/ChangeTaskComponent";
+import changeTask from "./pages/task";
 
 
 Vue.use(VueRouter);
@@ -28,9 +28,9 @@ let router = new VueRouter({
             component: Counter
         },
         {
-            path: '/change-task:id',
+            path: '/change-task/:id',
             name: 'change-task',
-            component: ChangeTask,
+            component: changeTask,
         }
 
     ]

@@ -26,9 +26,9 @@
 			id: Number,
         },
         methods: {
-			...mapMutations([
-				'deleteTask'
-			]),
+			...mapMutations({
+				deleteTask: 'deleteTask'
+			}),
 			GoToTaskPage(){
 				console.log('task.id = ' + this.task.id);
 				this.$router.push({ name: 'change-task', params: {id : this.task.id} })

@@ -27,35 +27,35 @@
             }
         },
 		created() {
-			this.taskObj = this.getTasks.filter(item=>item.id == this.$route.params.id)[0]
+			this.taskObj = this.getTasks.filter(item=>item.id === this.$route.params.id)[0]
 		},
 		computed: {
-			...mapGetters([
-				'getTaskById',
-				'getSomeThing',
-				'getTasks'
-			]),
+			...mapGetters({
+				getSomeThing: 'getSomeThing',
+				getTasks: 'getTasks'
+			}),
 		},
         methods: {
 			// taskByID() {
 			// 	console.log(this.getTasks.filter(item=>item.id == this.$route.params.id)[0])
 			// },
             addTask() {
-                if (this.task == '') {
-                    return this.taskError = true;
-                } else {
-                    this.taskError = false;
-                }
-                this.$emit('newTask', {
-                    isComplete: this.isComplete,
-                    task: this.task,
-                    desc: this.desc,
-					executionPeriod: this.executionPeriod,
-                });
-                console.log('addNew = ' + this.task)
-                this.task = '';
-                this.desc = '';
-                this.executionPeriod = '';
+				this.$router.push({ name: 'todo-list', params: {id : this.task.id} })
+                // if (this.task == '') {
+                //     return this.taskError = true;
+                // } else {
+                //     this.taskError = false;
+                // }
+                // this.$emit('newTask', {
+                //     isComplete: this.isComplete,
+                //     task: this.task,
+                //     desc: this.desc,
+				// 	executionPeriod: this.executionPeriod,
+                // });
+                // console.log('addNew = ' + this.task)
+                // this.task = '';
+                // this.desc = '';
+                // this.executionPeriod = '';
             },
         }
     }

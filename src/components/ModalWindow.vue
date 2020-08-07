@@ -31,19 +31,19 @@
             }
         },
 		computed: {
-			...mapGetters([
-				'getTasks',
-				'getTasksLength'
-			])
+			...mapGetters({
+				getTasks: 'getTasks',
+				getTasksLength: 'getTasksLength'
+			})
 		},
         methods: {
-			...mapMutations([
-				'changeIsShowModal',
-				'addTaskInSore'
-			]),
+			...mapMutations({
+				changeIsShowModal: 'changeIsShowModal',
+				addTaskInSore: 'addTaskInSore'
+			}),
 			changeTask() {
                 console.log(this.task)
-				if (this.task == '') {
+				if (this.task === '') {
 					return this.taskError = true;
 				} else {
 					this.taskError = false;
@@ -67,7 +67,7 @@
                 this.$emit('delTask', task)
             },
 			addTask(){
-				if (this.task == '') {
+				if (this.task === '') {
 					this.taskError = true;
 					return
 				} else {
@@ -77,7 +77,7 @@
 					task: this.task,
 					desc: this.desc,
 					// executionPeriod: this.executionPeriod;
-				}
+				};
 				// console.log(newTask);
 				this.changeIsShowModal();
 				console.log('addTaskk');

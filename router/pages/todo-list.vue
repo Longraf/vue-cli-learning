@@ -24,12 +24,12 @@
 			ModalWindow
 		},
 		computed: {
-			...mapGetters([
-				'getTasks',
-				'getTasksLength',
-				'getCaption',
-				'getIsShowModal'
-			])
+			...mapGetters({
+				getTasks: 'getTasks',
+				getTasksLength: 'getTasksLength',
+				getCaption: 'getCaption',
+				getIsShowModal: 'getIsShowModal'
+			})
 		},
 		created() {
 			if (localStorage.getItem('tasks')) {
@@ -50,10 +50,9 @@
 			},
 		},
 		methods: {
-			...mapMutations([
-				'changeIsShowModal',
-
-			]),
+			...mapMutations({
+				changeIsShowModal: 'changeIsShowModal',
+			}),
 			ChangeCount(value) {
 				this.count += value;
 			},
