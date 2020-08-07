@@ -7,13 +7,13 @@
 			<input class="vue-app__input" placeholder="Описание" type="text" v-model="desc">
 			<input class="vue-app__input" placeholder="Задайте период выполнения" type="text" v-model="executionPeriod ">
 		</div>
-		<input @click="addTask()" class="btn btn__submit  btn__default--h51" type="submit">
+		<input @click="addTask()" class="btn btn__submit  btn__default--h51" type="submit" value="Изменить">
 	</div>
 </template>
 
 <script>
     export default {
-        name: 'AddNewTask',
+        name: 'ChangeTask',
         data() {
             return {
                 task: '',
