@@ -38,6 +38,7 @@ export default new Vuex.Store({
       // let task = state.tasks.filter(item => item.id === obj.id)[0]
       // console.log(task + ' => this task from state');
       console.log(obj)
+      obj.obj.task = obj.value;
 
     }
 
