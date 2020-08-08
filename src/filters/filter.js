@@ -1,4 +1,4 @@
-export var upperCase = string =>{
-    string = string.toUpperCase();
-    return string
+export var upperCase = string => {
+  string = string.toUpperCase();
+  return string
 };

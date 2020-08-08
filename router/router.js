@@ -10,30 +10,30 @@ import changeTask from "./pages/task";
 Vue.use(VueRouter);
 
 let router = new VueRouter({
-    routes: [
-        {
-            path: '/',
-            name: 'index',
-            component: index,
-            props: {}
-        },
-        {
-            path: '/todo-list',
-            name: 'todo-list',
-            component: todoList
-        },
-        {
-            path: '/counter',
-            name: 'counter',
-            component: Counter
-        },
-        {
-            path: '/change-task/:id',
-            name: 'change-task',
-            component: changeTask,
-        }
+  routes: [
+    {
+      path: '/',
+      name: 'index',
+      component: index,
+      props: {}
+    },
+    {
+      path: '/todo-list',
+      name: 'todo-list',
+      component: todoList
+    },
+    {
+      path: '/counter',
+      name: 'counter',
+      component: Counter
+    },
+    {
+      path: '/change-task/:id',
+      name: 'change-task',
+      component: changeTask,
+    }
 
-    ]
+  ]
 });
 
 export default router
