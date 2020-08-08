@@ -5,9 +5,9 @@
 </template>
 
 <script>
-    export default {
-        name: 'index',
-        methods: {
-        },
-    }
+	export default {
+		name: 'index',
+		methods: {
+		},
+	}
 </script>

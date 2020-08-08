@@ -2,10 +2,10 @@
 	<div class="vue-app__input-value">
 		<!--        <p>{{newTask.task}}</p>-->
 		<div class="vue-app__input-value-wrapper">
-			<input class="vue-app__input" placeholder="Введите задачу" type="text" v-model="this.taskObj.task"
-				v-bind:class="taskError ? 'input__red' : '' ">
-			<input class="vue-app__input" placeholder="Описание" type="text" v-model="this.taskObj.desc">
-			<input class="vue-app__input" placeholder="Задайте период выполнения" type="text" v-model="this.taskObj.executionPeriod ">
+			<input class="vue-app__input" placeholder="Введите задачу" type="text" :value="this.taskk"
+				:class="taskError ? 'input__red' : '' ">
+			<input class="vue-app__input" placeholder="Описание" type="text" :value="this.taskObj.desc">
+			<input class="vue-app__input" placeholder="Задайте период выполнения" type="text" >
 		</div>
 
 		<input @click="addTask()" class="btn btn__submit  btn__default--h51" type="submit" value="Изменить">
@@ -15,32 +15,50 @@
 
 <script>
 
-	import {mapGetters} from 'vuex'
+	import {mapGetters, mapMutations} from 'vuex'
 
     export default {
         name: 'ChangeTask',
         data() {
             return {
+				// taskObj: this.taskObj,
+				taskObj: this.taskObj,
+				routeID: this.routeID,
 				taskError: false,
 				isComplete: false,
 				executionPeriod: '',
             }
         },
 		created() {
-			this.taskObj = this.getTasks.filter(item=>item.id === this.$route.params.id)[0]
+			this.taskObj = this.getTasks.filter(item => item.id === this.$route.params.id)[0]
+			this.routeID = this.$route.params.id;
 		},
 		computed: {
 			...mapGetters({
 				getSomeThing: 'getSomeThing',
 				getTasks: 'getTasks'
 			}),
+			taskk() {
+				return this.taskObj.task
+			},
+
 		},
         methods: {
 			// taskByID() {
 			// 	console.log(this.getTasks.filter(item=>item.id == this.$route.params.id)[0])
 			// },
+			...mapMutations({
+				updateTaskById: 'updateTaskById'
+			}),
             addTask() {
-				this.$router.push({ name: 'todo-list', params: {id : this.task.id} })
+				console.log(this.task)
+				this.updateTaskById({
+					id: this.routeID,
+					task: this.task
+				});
+				this.$router.push({
+					name: 'todo-list',
+				})
                 // if (this.task == '') {
                 //     return this.taskError = true;
                 // } else {

@@ -31,7 +31,7 @@
 				getIsShowModal: 'getIsShowModal'
 			})
 		},
-		created() {
+		mounted() {
 			if (localStorage.getItem('tasks')) {
 				this.tasks = this.getTasks;
 			} else {
