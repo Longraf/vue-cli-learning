@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -26,7 +26,8 @@ export default new Vuex.Store({
     },
     addTaskInSore(state, newTask) {
       console.log('This is addTaskInStore');
-      if (this.getTasksLength == 0) {
+      console.log(newTask)
+      if (this.getTasksLength === 0) {
         newTask.id = 0
       } else {
         newTask.id = state.tasks[state.tasks.length - 1].id + 1
@@ -35,12 +36,17 @@ export default new Vuex.Store({
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
     updateTaskById(state, obj) {
-      // let task = state.tasks.filter(item => item.id === obj.id)[0]
-      // console.log(task + ' => this task from state');
-      console.log(obj)
-      obj.obj.task = obj.value;
-
-    }
+      obj.currentObj.task = obj.task;
+      localStorage.setItem('tasks', JSON.stringify(state.tasks))
+    },
+    updateDescById(state, obj) {
+      obj.currentObj.desc = obj.desc;
+      localStorage.setItem('tasks', JSON.stringify(state.tasks))
+    },
+    updateExecutePeriodById(state, obj) {
+      obj.currentObj.executePeriod = obj.executePeriod;
+      localStorage.setItem('tasks', JSON.stringify(state.tasks))
+    },
 
 
   },
@@ -56,13 +62,6 @@ export default new Vuex.Store({
     getTasksLength(state) {
       return state.tasks.length
     },
-    // getTaskById(state) {
-    //     return (id) => {
-    //         state.tasks[id]
-    //     };
-    //
-    //     // return state.tasks.filter(item => item.id === id);
-    // },
     getSomeThing(state, getters) {
       return state(getters)
     },

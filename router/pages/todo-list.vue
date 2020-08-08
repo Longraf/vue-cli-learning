@@ -56,24 +56,6 @@
       ChangeCount(value) {
         this.count += value;
       },
-      // DeleteTask(task) {
-      //
-      // 	let findDataTask = this.tasks.filter(item => item.id === task.id)[0];
-      // 	findDataTask.task = task.task;
-      // 	findDataTask.desc = task.desc;
-      // 	findDataTask.executionPeriod = task.executionPeriod;
-      // 	this.tasks.splice(this.tasks.indexOf(findDataTask), 1);
-      // 	localStorage.setItem('tasks', JSON.stringify(this.tasks))
-      // },
-      // AddTask(newTask) {
-      // 	if (this.getTasksLength == 0 ) {
-      // 		newTask.id = 0
-      // 	} else {
-      // 		newTask.id = this.tasks[this.tasks.length-1].id + 1
-      // 	}
-      // 	this.isShowModal = false;
-      // 	this.tasks.push(newTask)
-      // },
     }
   }
 </script>

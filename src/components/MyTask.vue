@@ -5,9 +5,7 @@
       <h3 :class="task.isComplete ? 'task__caption--complete' : ''" class="task__caption">{{ task.task }}</h3>
       <p :class="task.isComplete ? 'task__text--complete' : ''" class="task__text">{{ task.desc }}</p>
     </div>
-    <!--		<a href="change-task#/change-task">-->
     <button @click="GoToTaskPage" class="btn btn__change">Редактировать</button>
-    <!--		</a>-->
 
     <button @click="deleteTask(task)" class="btn btn__delete">Удалить</button>
   </div>
@@ -22,7 +20,7 @@
       isComplete: Boolean,
       task: Object,
       tasks: Array,
-      executionPeriod: [String, Number],
+      executePeriod: [String, Number],
       id: Number,
     },
     methods: {
@@ -30,7 +28,6 @@
         deleteTask: 'deleteTask'
       }),
       GoToTaskPage() {
-        console.log('task.id = ' + this.task.id);
         this.$router.push({name: 'change-task', params: {id: this.task.id}})
       },
     }

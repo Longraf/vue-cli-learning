@@ -82,20 +82,27 @@ p {
 
   &__input-value{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
     margin: 10px 0 10px;
   }
-
-  &__input{
-    margin: 5px;
+  &__change-warning{
+    padding-left: 8px;
   }
-  .input__red{
-    border: 2px solid red;
-    &::placeholder{
-      color: red;
+  .input{
+    margin: 5px;
+    &__red{
+      border: 2px solid red;
+      &::placeholder{
+        color: red;
+      }
+    }
+    &--w300{
+      width: 300px;
     }
   }
+
+
 }
 
 .task{
@@ -142,6 +149,9 @@ p {
     &--h51{
       height: 51px;
     }
+    &--w175{
+      width: 175px;
+    }
     &:hover{
       border-color: black;
       font-size: 16px;
@@ -150,7 +160,16 @@ p {
 
   &__submit{
     margin-top: 5px;
-    height: 83px;
+    &--w45p{
+      width: 45%;
+      &:first-child{
+        margin-right: 5px;
+      }
+    }
+    //height: 83px;
+    &--w200{
+      width: 200px;
+    }
   }
 
   &__delete{

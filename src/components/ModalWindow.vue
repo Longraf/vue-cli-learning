@@ -4,14 +4,14 @@
       <div class="modal-window__close" @click="this.changeIsShowModal"></div>
     </div>
     <div class="vue-app__input-value-wrapper">
-      <input class="vue-app__input" placeholder="Введите задачу" type="text" v-model='task'
+      <input class="input" placeholder="Введите задачу" type="text" v-model='task'
              v-bind:class="taskError ? 'input__red' : '' ">
-      <input class="vue-app__input" placeholder="Описание" type="text" v-model="desc">
-      <input class="vue-app__input" placeholder="Задайте период выполнения" type="text" v-model="executionPeriod ">
+      <input class="input" placeholder="Описание" type="text" v-model="desc">
+      <input class="input" placeholder="Задайте период выполнения" type="text" v-model="executePeriod ">
 
     </div>
-    <input @click="this.addTask" type="submit" value="Добавить запись">
-    <input @click="this.changeIsShowModal" type="submit" value="Отменить добавление">
+    <input class="btn__submit btn__submit--w45p" @click="this.addTask" type="submit" value="Добавить запись">
+    <input class="btn__submit btn__submit--w45p" @click="this.changeIsShowModal" type="submit" value="Отменить добавление">
     <!--		<input @click="deleteTask" type="button" value="Удалить запись">-->
   </div>
 </template>
@@ -26,8 +26,8 @@
       return {
         task: '',
         desc: '',
-        executionPeriod: '',
-        isComplete: this.isComplete,
+        executePeriod: '',
+        isComplete: false,
         taskError: false,
       }
     },
@@ -42,28 +42,6 @@
         changeIsShowModal: 'changeIsShowModal',
         addTaskInSore: 'addTaskInSore'
       }),
-      changeTask() {
-        console.log(this.task)
-        if (this.task === '') {
-          return this.taskError = true;
-        } else {
-          this.taskError = false;
-        }
-        // this = this.ntask;
-        let newTask = {
-          // oldTask: this,
-          isComplete: false,
-          task: this.task,
-          desc: this.desc,
-          executionPeriod: this.executionPeriod,
-        };
-        console.log(newTask);
-        this.changeIsShowModal()
-        this.$emit('addTask', newTask);
-
-        // this.task = '';
-        // this.desc = '';
-      },
       deleteTask(task) {
         this.$emit('delTask', task)
       },
@@ -77,7 +55,9 @@
         let newTask = {
           task: this.task,
           desc: this.desc,
-          // executionPeriod: this.executionPeriod;
+					executePeriod: this.executePeriod,
+					isComplete: this.isComplete
+          // executePeriod: this.executePeriod;
         };
         // console.log(newTask);
         this.changeIsShowModal();
