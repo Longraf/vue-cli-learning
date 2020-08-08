@@ -35,8 +35,8 @@ export default new Vuex.Store({
             localStorage.setItem('tasks', JSON.stringify(state.tasks))
         },
         updateTaskById (state, obj) {
-            let task = state.tasks.filter(item => item.id === obj.id)[0]
-            console.log(task + ' => this task from state');
+            // let task = state.tasks.filter(item => item.id === obj.id)[0]
+            // console.log(task + ' => this task from state');
             console.log(obj)
         }
 

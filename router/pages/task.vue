@@ -51,7 +51,7 @@
 				updateTaskById: 'updateTaskById'
 			}),
             addTask() {
-				console.log(this.task)
+				console.log(this.taskk)
 				this.updateTaskById({
 					id: this.routeID,
 					task: this.task
