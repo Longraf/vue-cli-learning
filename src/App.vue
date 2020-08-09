@@ -3,21 +3,21 @@
 
 		<Sidebar/>
 		<transition name="task-view">
-			<router-view />
+			<router-view/>
 		</transition>
 	</div>
 </template>
 
 <script>
-	import router from "../router/router";
-    import Sidebar from "./components/Sidebar";
+  import router from "../router/router";
+  import Sidebar from "./components/Sidebar";
 
-    export default {
-        name: 'app',
-        router,
+  export default {
+    name: 'app',
+    router,
 
-		components: {
-            Sidebar
-		},
-    }
+    components: {
+      Sidebar
+    },
+  }
 </script>

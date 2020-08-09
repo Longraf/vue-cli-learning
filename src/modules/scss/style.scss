@@ -4,13 +4,16 @@ body {
   padding: 0;
   height: 100%;
 }
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
+
 p {
   padding: 0;
   margin: 0;
 }
+
 .vue-app {
   position: relative;
   min-height: 100%;
@@ -22,99 +25,112 @@ p {
   background-color: orange;
   display: flex;
   //padding-top: 20px;
-  &__sidebar{
+  &__sidebar {
     border-right: 1px solid red;
     padding: 5px 5px 0;
     width: 150px;
     display: flex;
     flex-direction: column;
   }
-  &__sidebar-list{
+
+  &__sidebar-list {
     text-align: left;
     padding: 2px;
     text-decoration: none;
     color: #2c3e50;
     font-size: 19px;
-    &:hover{
+
+    &:hover {
       text-decoration: underline;
     }
   }
-  .router-link-exact-active{
+
+  .router-link-exact-active {
     font-weight: bold;
   }
-  &__container{
+
+  &__container {
     width: 100%;
     align-self: center;
   }
-  &__caption{
+
+  &__caption {
     margin: 0;
     padding: 15px 0;
     font-size: 30px;
   }
 
-  &__is-show{
+  &__is-show {
     height: 120px;
     width: 300px;
     margin: 0 auto;
     border: 1px solid gray;
   }
 
-  &__is-show-wrapper{
+  &__is-show-wrapper {
     height: 60px;
   }
 
-  &__my-counter{
+  &__my-counter {
     display: flex;
     //margin: 0 autp;
     justify-content: center;
     padding-top: 20px;
   }
 
-  &__paragraph{
+  &__paragraph {
     width: 150px;
     font-size: 40px;
   }
 
-  &__input-value-wrapper{
+  &__input-value-wrapper {
     display: flex;
     flex-direction: column;
   }
 
-  &__input-value{
+  &__input-value {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     margin: 10px 0 10px;
   }
-  &__change-warning{
+
+  &__change-warning {
     padding-left: 8px;
   }
-  .input{
+
+  .input {
     margin: 5px;
-    &__red{
+
+    &__red {
       border: 2px solid red;
-      &::placeholder{
+
+      &::placeholder {
         color: red;
       }
     }
-    &--w300{
+
+    &--w300 {
       width: 300px;
     }
   }
-  .modal-window-enter-active{
+
+  .modal-window-enter-active {
     animation: scale-anim 0.8s;
   }
-  .modal-window-leave-active{
+
+  .modal-window-leave-active {
     animation: scale-anim 0.8s reverse
   }
-  @keyframes scale-anim{
-    0%{
+
+  @keyframes scale-anim {
+    0% {
       transform: scale(0)
     }
-    50%{
+    50% {
       transform: scale(1.5)
     }
-    100%{
+    100% {
       transform: scale(1)
     }
   }
@@ -127,21 +143,23 @@ p {
   //  opacity: 0;
   //}
 
-  .task-view-enter-active{
+  .task-view-enter-active {
     transition: opacity .5s;
   }
-  .task-view-leave-active{
+
+  .task-view-leave-active {
     transition: opacity .5s;
     display: none;
   }
+
   .task-view-enter,
-  .task-view-leave-to{
+  .task-view-leave-to {
     transform: translateX(10px);
     opacity: 0;
   }
 }
 
-.task{
+.task {
   display: flex;
   width: 400px;
   margin: 0 auto 5px;
@@ -149,82 +167,94 @@ p {
   align-items: center;
   border: 2px solid darkorange;
   border-radius: 5px;
-  &__wrapper{
+
+  &__wrapper {
     width: 300px;
     margin: 10px auto;
   }
-  &__caption{
+
+  &__caption {
     margin: 1px;
-    &--complete{
+
+    &--complete {
       color: #cc9126;
       text-decoration: line-through;
     }
   }
-  &__text{
+
+  &__text {
     padding-bottom: 10px;
-    &--complete{
+
+    &--complete {
       color: #cc9126;
       text-decoration: line-through;
     }
   }
 }
 
-.btn{
+.btn {
   width: 115px;
   height: 40px;
   margin: 0 5px;
   border-radius: 5px;
   transition: 0.3s font-size;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     background-color: #d5d5d5;
   }
 
-  &__default{
+  &__default {
 
-    &--h51{
+    &--h51 {
       height: 51px;
     }
-    &--w175{
+
+    &--w175 {
       width: 175px;
     }
-    &:hover{
+
+    &:hover {
       border-color: black;
       font-size: 16px;
     }
   }
 
-  &__submit{
+  &__submit {
     margin-top: 5px;
-    &--w45p{
+
+    &--w45p {
       width: 45%;
-      &:first-child{
+
+      &:first-child {
         margin-right: 5px;
       }
     }
+
     //height: 83px;
-    &--w200{
+    &--w200 {
       width: 200px;
     }
   }
 
-  &__delete{
+  &__delete {
     height: 33px;
-    &:hover{
+
+    &:hover {
       background-color: #d5d5d5;
     }
   }
 
-  &__change{
+  &__change {
     height: 33px;
   }
 
-  &__width200{
+  &__width200 {
     width: 200px;
   }
 }
 
-.modal-window{
+.modal-window {
   width: 50%;
   height: 80vh;
   top: 10vh;
@@ -233,20 +263,23 @@ p {
   background: snow;
   max-height: 500px;
   position: absolute;
-  &__close-wrapper{
+
+  &__close-wrapper {
     width: 100%;
 
     height: 32px;
   }
-  &__close{
+
+  &__close {
     position: relative;
     height: 40px;
     width: 40px;
     cursor: pointer;
     //background-color: greenyellow;
     margin-left: auto;
+
     &:after,
-    &:before{
+    &:before {
       content: '';
       display: flex;
       top: 17px;
@@ -256,7 +289,8 @@ p {
       position: absolute;
       transform: rotate(45deg);
     }
-    &:after{
+
+    &:after {
       transform: rotate(135deg);
     }
   }
