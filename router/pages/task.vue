@@ -12,7 +12,6 @@
     <p class="vue-app__change-warning"><b>Внимание</b> изменений данных происходит мгновенно </p>
   </div>
 
-
 </template>
 
 <script>

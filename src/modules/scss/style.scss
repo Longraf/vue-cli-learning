@@ -101,26 +101,44 @@ p {
       width: 300px;
     }
   }
-  .modal-window-enter-active,
-  .modal-window-leave-active{
-    transition-property: opacity;
-    transition-duration: 0.8s
+  .modal-window-enter-active{
+    animation: scale-anim 0.8s;
   }
-  .modal-window-enter,
-  .modal-window-leave-to{
+  .modal-window-leave-active{
+    animation: scale-anim 0.8s reverse
+  }
+  @keyframes scale-anim{
+    0%{
+      transform: scale(0)
+    }
+    50%{
+      transform: scale(1.5)
+    }
+    100%{
+      transform: scale(1)
+    }
+  }
+  //.modal-window-enter-active,
+  //.modal-window-leave-active{
+  //  transition: opacity 0.8s;
+  //}
+  //.modal-window-enter,
+  //.modal-window-leave-to{
+  //  opacity: 0;
+  //}
+
+  .task-view-enter-active{
+    transition: opacity .5s;
+  }
+  .task-view-leave-active{
+    transition: opacity .5s;
+    display: none;
+  }
+  .task-view-enter,
+  .task-view-leave-to{
+    transform: translateX(10px);
     opacity: 0;
   }
-  //@keyframes opacity-in {
-  //  0% {
-  //    transform: scale(0);
-  //  }
-  //  50% {
-  //    transform: scale(1.5);
-  //  }
-  //  100% {
-  //    transform: scale(1);
-  //  }
-  //}
 }
 
 .task{
