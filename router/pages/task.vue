@@ -40,8 +40,6 @@
     methods: {
       ...mapMutations({
         updateTaskById: 'updateTaskById',
-        updateDescById: 'updateDescById',
-        updateExecutePeriodById: 'updateExecutePeriodById',
       }),
     }
   }
