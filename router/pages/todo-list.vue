@@ -5,7 +5,10 @@
     <MyTask :key="task.id" :task="task" v-for="task in this.getTasks"/>
 
     <button @click="changeIsShowModal" type="button">Добавить новую задачу</button>
-    <ModalWindow v-if="getIsShowModal"/>
+    <transition name="modal-window">
+      <ModalWindow v-if="getIsShowModal"/>
+    </transition>
+
   </div>
 </template>
 
