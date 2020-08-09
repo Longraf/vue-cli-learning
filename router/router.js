@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import index from '../router/pages/index';
 import TasksList from './pages/tasks/list';
 import Counter from "../router/pages/counter";
-import TaskNew from "./pages/tasks/task-new";
+import TaskNew from "./pages/tasks/change-task";
 
 
 Vue.use(VueRouter);
