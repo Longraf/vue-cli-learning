@@ -2,7 +2,7 @@
 	<div class="vue-app" id="vue-app">
 
 		<Sidebar/>
-		<transition name="task-view">
+		<transition name="page-animate">
 			<router-view/>
 		</transition>
 	</div>

@@ -25,8 +25,6 @@ export default new Vuex.Store({
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
     addTaskInSore(state, newTask) {
-      console.log('This is addTaskInStore');
-      console.log(newTask)
       if (this.getTasksLength === 0) {
         newTask.id = 0
       } else {
@@ -39,8 +37,8 @@ export default new Vuex.Store({
       obj.currentObj.task = obj.task;
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
-    updateDescById(state, obj) {
-      obj.currentObj.desc = obj.desc;
+    updateDescriptionById(state, obj) {
+      obj.currentObj.description = obj.description;
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
     updateExecutePeriodById(state, obj) {

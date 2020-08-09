@@ -143,17 +143,17 @@ p {
   //  opacity: 0;
   //}
 
-  .task-view-enter-active {
+  .page-animate-enter-active {
     transition: opacity .5s;
   }
 
-  .task-view-leave-active {
+  .page-animate-leave-active {
     transition: opacity .5s;
     display: none;
   }
 
-  .task-view-enter,
-  .task-view-leave-to {
+  .page-animate-enter,
+  .page-animate-leave-to {
     transform: translateX(10px);
     opacity: 0;
   }

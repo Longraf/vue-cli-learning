@@ -6,7 +6,7 @@
     <div class="vue-app__input-value-wrapper">
       <input class="input" placeholder="Введите задачу" type="text" v-model='task'
              v-bind:class="taskError ? 'input__red' : '' ">
-      <input class="input" placeholder="Описание" type="text" v-model="desc">
+      <input class="input" placeholder="Описание" type="text" v-model="description">
       <input class="input" placeholder="Задайте период выполнения" type="text" v-model="executePeriod ">
 
     </div>
@@ -25,7 +25,7 @@
     data() {
       return {
         task: '',
-        desc: '',
+        description: '',
         executePeriod: '',
         isComplete: false,
         taskError: false,
@@ -54,17 +54,12 @@
         }
         let newTask = {
           task: this.task,
-          desc: this.desc,
+          description: this.description,
 					executePeriod: this.executePeriod,
 					isComplete: this.isComplete
-          // executePeriod: this.executePeriod;
         };
-        // console.log(newTask);
         this.changeIsShowModal();
-        console.log('addTaskk');
         this.addTaskInSore(newTask)
-
-
       }
     }
   }

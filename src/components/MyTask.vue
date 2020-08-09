@@ -3,7 +3,7 @@
     <input @click="isCompleted(task)" type="checkbox" v-model="task.isComplete">
     <div class="task__wrapper">
       <h3 :class="task.isComplete ? 'task__caption--complete' : ''" class="task__caption">{{ task.task }}</h3>
-      <p :class="task.isComplete ? 'task__text--complete' : ''" class="task__text">{{ task.desc }}</p>
+      <p :class="task.isComplete ? 'task__text--complete' : ''" class="task__text">{{ task.description }}</p>
     </div>
     <button @click="GoToTaskPage" class="btn btn__change">Редактировать</button>
 
